@@ -5546,46 +5546,24 @@ type UnauthorizedError = APIErrorResponseSponsoredProductAdsV1
 // AvailabilityV1GetProductDeliveryInformationParams defines parameters for AvailabilityV1GetProductDeliveryInformation.
 type AvailabilityV1GetProductDeliveryInformationParams struct {
 	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
-	Limit         *int32  `form:"limit,omitempty" json:"limit,omitempty"`
-	Cursor        *string `form:"cursor,omitempty" json:"cursor,omitempty"`
-	Authorization string  `json:"Authorization"`
+	Limit  *int32  `form:"limit,omitempty" json:"limit,omitempty"`
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 }
 
 // AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8Body defines parameters for AvailabilityV1StoreProductDeliveryInformationUsingPOST.
 type AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8Body = []ProductDeliveryInformationRequestDTOAvailabilityV1
-
-// AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams defines parameters for AvailabilityV1StoreProductDeliveryInformationUsingPOST.
-type AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// AvailabilityV1GetDeliveryInformationBySKUParams defines parameters for AvailabilityV1GetDeliveryInformationBySKU.
-type AvailabilityV1GetDeliveryInformationBySKUParams struct {
-	Authorization string `json:"Authorization"`
-}
 
 // AvailabilityV1GetAvailableQuantitiesParams defines parameters for AvailabilityV1GetAvailableQuantities.
 type AvailabilityV1GetAvailableQuantitiesParams struct {
 	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
 	Limit *int32 `form:"limit,omitempty" json:"limit,omitempty"`
 	// Deprecated: this property has been marked as deprecated upstream, but no `x-deprecated-reason` was set
-	Page          *int32  `form:"page,omitempty" json:"page,omitempty"`
-	Cursor        *string `form:"cursor,omitempty" json:"cursor,omitempty"`
-	Authorization string  `json:"Authorization"`
+	Page   *int32  `form:"page,omitempty" json:"page,omitempty"`
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 }
 
 // AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8Body defines parameters for AvailabilityV1StoreAvailableQuantitiesUsingPOST.
 type AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8Body = []AvailableQuantityRequestDTOAvailabilityV1
-
-// AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams defines parameters for AvailabilityV1StoreAvailableQuantitiesUsingPOST.
-type AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// AvailabilityV1GetAvailableQuantityBySkuParams defines parameters for AvailabilityV1GetAvailableQuantityBySku.
-type AvailabilityV1GetAvailableQuantityBySkuParams struct {
-	Authorization string `json:"Authorization"`
-}
 
 // PriceReductionsV1GetAllReductionsForPartnerParams defines parameters for PriceReductionsV1GetAllReductionsForPartner.
 type PriceReductionsV1GetAllReductionsForPartnerParams struct {
@@ -5625,28 +5603,7 @@ type ShipmentsV1AppendPositionItemsUsingPOSTJSONBody = []PositionItemShipmentsV1
 
 // ShippingProfilesV1GetShippingProfilesParams defines parameters for ShippingProfilesV1GetShippingProfiles.
 type ShippingProfilesV1GetShippingProfilesParams struct {
-	Cursor        *string `form:"cursor,omitempty" json:"cursor,omitempty"`
-	Authorization string  `json:"Authorization"`
-}
-
-// ShippingProfilesV1CreateShippingProfileParams defines parameters for ShippingProfilesV1CreateShippingProfile.
-type ShippingProfilesV1CreateShippingProfileParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ShippingProfilesV1DeleteShippingProfileParams defines parameters for ShippingProfilesV1DeleteShippingProfile.
-type ShippingProfilesV1DeleteShippingProfileParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ShippingProfilesV1GetShippingProfileByIdParams defines parameters for ShippingProfilesV1GetShippingProfileById.
-type ShippingProfilesV1GetShippingProfileByIdParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ShippingProfilesV1UpdateShippingProfileParams defines parameters for ShippingProfilesV1UpdateShippingProfile.
-type ShippingProfilesV1UpdateShippingProfileParams struct {
-	Authorization string `json:"Authorization"`
+	Cursor *string `form:"cursor,omitempty" json:"cursor,omitempty"`
 }
 
 // SponsoredProductAdsReportingV1GetCampaignPerformanceV1SpaReportingCampaignPerformanceGetParams defines parameters for SponsoredProductAdsReportingV1GetCampaignPerformanceV1SpaReportingCampaignPerformanceGet.
@@ -5717,56 +5674,10 @@ type ReturnsWarehouseV2GetAllReturnsWarehouseAddressesParams struct {
 	Limit               *int32                                                                      `form:"limit,omitempty" json:"limit,omitempty"`
 	Page                *int32                                                                      `form:"page,omitempty" json:"page,omitempty"`
 	ReturnWarehouseType *ReturnsWarehouseV2GetAllReturnsWarehouseAddressesParamsReturnWarehouseType `form:"returnWarehouseType,omitempty" json:"returnWarehouseType,omitempty"`
-	Authorization       string                                                                      `json:"Authorization"`
 }
 
 // ReturnsWarehouseV2GetAllReturnsWarehouseAddressesParamsReturnWarehouseType defines parameters for ReturnsWarehouseV2GetAllReturnsWarehouseAddresses.
 type ReturnsWarehouseV2GetAllReturnsWarehouseAddressesParamsReturnWarehouseType string
-
-// ReturnsWarehouseV2CreateReturnWarehouseAddressParams defines parameters for ReturnsWarehouseV2CreateReturnWarehouseAddress.
-type ReturnsWarehouseV2CreateReturnWarehouseAddressParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdParams defines parameters for ReturnsWarehouseV2DeleteReturnsWarehouseAddressById.
-type ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ReturnsWarehouseV2GetReturnsWarehouseAddressByIdParams defines parameters for ReturnsWarehouseV2GetReturnsWarehouseAddressById.
-type ReturnsWarehouseV2GetReturnsWarehouseAddressByIdParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ReturnsWarehouseV2UpdateReturnWarehouseAddressParams defines parameters for ReturnsWarehouseV2UpdateReturnWarehouseAddress.
-type ReturnsWarehouseV2UpdateReturnWarehouseAddressParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdParams defines parameters for ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId.
-type ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams defines parameters for ReturnsWarehouseV2CreateReturnsWarehouseCarrier.
-type ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ReturnsWarehouseV2DeleteParcelReturnCarrierParams defines parameters for ReturnsWarehouseV2DeleteParcelReturnCarrier.
-type ReturnsWarehouseV2DeleteParcelReturnCarrierParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdParams defines parameters for ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId.
-type ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdParams struct {
-	Authorization string `json:"Authorization"`
-}
-
-// ReturnsWarehouseV2UpdateParcelReturnCarrierParams defines parameters for ReturnsWarehouseV2UpdateParcelReturnCarrier.
-type ReturnsWarehouseV2UpdateParcelReturnCarrierParams struct {
-	Authorization string `json:"Authorization"`
-}
 
 // ReceiptsV3GetReceiptsUsingGET5Params defines parameters for ReceiptsV3GetReceiptsUsingGET5.
 type ReceiptsV3GetReceiptsUsingGET5Params struct {
@@ -6309,28 +6220,28 @@ type ClientInterface interface {
 
 	// AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBody performs a POST /v1/availability/product-delivery-information (the `AvailabilityV1StoreProductDeliveryInformationUsingPOST` operationId) request,
 	// with any type of body and a specified content type.
-	AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBody(ctx context.Context, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8Body performs a POST /v1/availability/product-delivery-information (the `AvailabilityV1StoreProductDeliveryInformationUsingPOST` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type.
-	AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx context.Context, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx context.Context, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AvailabilityV1GetDeliveryInformationBySKU performs a GET /v1/availability/product-delivery-information/{sku} (the `AvailabilityV1GetDeliveryInformationBySKU` operationId) request.
-	AvailabilityV1GetDeliveryInformationBySKU(ctx context.Context, sku string, params *AvailabilityV1GetDeliveryInformationBySKUParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AvailabilityV1GetDeliveryInformationBySKU(ctx context.Context, sku string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AvailabilityV1GetAvailableQuantities performs a GET /v1/availability/quantities (the `AvailabilityV1GetAvailableQuantities` operationId) request.
 	AvailabilityV1GetAvailableQuantities(ctx context.Context, params *AvailabilityV1GetAvailableQuantitiesParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBody performs a POST /v1/availability/quantities (the `AvailabilityV1StoreAvailableQuantitiesUsingPOST` operationId) request,
 	// with any type of body and a specified content type.
-	AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBody(ctx context.Context, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8Body performs a POST /v1/availability/quantities (the `AvailabilityV1StoreAvailableQuantitiesUsingPOST` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type.
-	AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx context.Context, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx context.Context, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// AvailabilityV1GetAvailableQuantityBySku performs a GET /v1/availability/quantities/{sku} (the `AvailabilityV1GetAvailableQuantityBySku` operationId) request.
-	AvailabilityV1GetAvailableQuantityBySku(ctx context.Context, sku string, params *AvailabilityV1GetAvailableQuantityBySkuParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	AvailabilityV1GetAvailableQuantityBySku(ctx context.Context, sku string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ShipmentsV1CreatedAndSentMultiparcelShipmentUsingPOSTWithBody performs a POST /v1/multiparcel-shipments (the `ShipmentsV1CreatedAndSentMultiparcelShipmentUsingPOST` operationId) request,
 	// with any type of body and a specified content type.
@@ -6398,25 +6309,25 @@ type ClientInterface interface {
 
 	// ShippingProfilesV1CreateShippingProfileWithBody performs a POST /v1/shipping-profiles (the `ShippingProfilesV1CreateShippingProfile` operationId) request,
 	// with any type of body and a specified content type.
-	ShippingProfilesV1CreateShippingProfileWithBody(ctx context.Context, params *ShippingProfilesV1CreateShippingProfileParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ShippingProfilesV1CreateShippingProfileWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8Body performs a POST /v1/shipping-profiles (the `ShippingProfilesV1CreateShippingProfile` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type.
-	ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx context.Context, params *ShippingProfilesV1CreateShippingProfileParams, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx context.Context, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ShippingProfilesV1DeleteShippingProfile performs a DELETE /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1DeleteShippingProfile` operationId) request.
-	ShippingProfilesV1DeleteShippingProfile(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1DeleteShippingProfileParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ShippingProfilesV1DeleteShippingProfile(ctx context.Context, shippingProfileId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ShippingProfilesV1GetShippingProfileById performs a GET /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1GetShippingProfileById` operationId) request.
-	ShippingProfilesV1GetShippingProfileById(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1GetShippingProfileByIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ShippingProfilesV1GetShippingProfileById(ctx context.Context, shippingProfileId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ShippingProfilesV1UpdateShippingProfileWithBody performs a PUT /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1UpdateShippingProfile` operationId) request,
 	// with any type of body and a specified content type.
-	ShippingProfilesV1UpdateShippingProfileWithBody(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ShippingProfilesV1UpdateShippingProfileWithBody(ctx context.Context, shippingProfileId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8Body performs a PUT /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1UpdateShippingProfile` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type.
-	ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx context.Context, shippingProfileId string, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// SponsoredProductAdsReportingV1GetCampaignPerformanceV1SpaReportingCampaignPerformanceGet performs a GET /v1/spa-reporting/campaign-performance (the `SponsoredProductAdsReportingV1GetCampaignPerformanceV1SpaReportingCampaignPerformanceGet` operationId) request.
 	SponsoredProductAdsReportingV1GetCampaignPerformanceV1SpaReportingCampaignPerformanceGet(ctx context.Context, params *SponsoredProductAdsReportingV1GetCampaignPerformanceV1SpaReportingCampaignPerformanceGetParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -6540,50 +6451,50 @@ type ClientInterface interface {
 
 	// ReturnsWarehouseV2CreateReturnWarehouseAddressWithBody performs a POST /v2/returns-warehouse/addresses (the `ReturnsWarehouseV2CreateReturnWarehouseAddress` operationId) request,
 	// with any type of body and a specified content type.
-	ReturnsWarehouseV2CreateReturnWarehouseAddressWithBody(ctx context.Context, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2CreateReturnWarehouseAddressWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body performs a POST /v2/returns-warehouse/addresses (the `ReturnsWarehouseV2CreateReturnWarehouseAddress` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type.
-	ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx context.Context, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx context.Context, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2DeleteReturnsWarehouseAddressById performs a DELETE /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2DeleteReturnsWarehouseAddressById` operationId) request.
-	ReturnsWarehouseV2DeleteReturnsWarehouseAddressById(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2DeleteReturnsWarehouseAddressById(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2GetReturnsWarehouseAddressById performs a GET /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2GetReturnsWarehouseAddressById` operationId) request.
-	ReturnsWarehouseV2GetReturnsWarehouseAddressById(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseAddressByIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2GetReturnsWarehouseAddressById(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBody performs a PUT /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2UpdateReturnWarehouseAddress` operationId) request,
 	// with any type of body and a specified content type.
-	ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBody(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBody(ctx context.Context, returnAddressId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body performs a PUT /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2UpdateReturnWarehouseAddress` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type.
-	ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId performs a GET /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId` operationId) request.
-	ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBody performs a POST /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2CreateReturnsWarehouseCarrier` operationId) request,
 	// with any type of body and a specified content type.
-	ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBody(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBody(ctx context.Context, returnAddressId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8Body performs a POST /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2CreateReturnsWarehouseCarrier` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type.
-	ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2DeleteParcelReturnCarrier performs a DELETE /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2DeleteParcelReturnCarrier` operationId) request.
-	ReturnsWarehouseV2DeleteParcelReturnCarrier(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2DeleteParcelReturnCarrierParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2DeleteParcelReturnCarrier(ctx context.Context, returnAddressId string, returnAddressCarrierId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId performs a GET /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId` operationId) request.
-	ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId(ctx context.Context, returnAddressId string, returnAddressCarrierId string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2UpdateParcelReturnCarrierWithBody performs a PUT /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2UpdateParcelReturnCarrier` operationId) request,
 	// with any type of body and a specified content type.
-	ReturnsWarehouseV2UpdateParcelReturnCarrierWithBody(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2UpdateParcelReturnCarrierWithBody(ctx context.Context, returnAddressId string, returnAddressCarrierId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8Body performs a PUT /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2UpdateParcelReturnCarrier` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type.
-	ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, returnAddressCarrierId string, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// ReceiptsV3GetReceiptsUsingGET5 performs a GET /v3/receipts (the `ReceiptsV3GetReceiptsUsingGET5` operationId) request.
 	ReceiptsV3GetReceiptsUsingGET5(ctx context.Context, params *ReceiptsV3GetReceiptsUsingGET5Params, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -6716,8 +6627,8 @@ func (c *Client) AvailabilityV1GetProductDeliveryInformation(ctx context.Context
 
 // AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBody performs a POST /v1/availability/product-delivery-information (the `AvailabilityV1StoreProductDeliveryInformationUsingPOST` operationId) request,
 // with any type of body and a specified content type.
-func (c *Client) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBody(ctx context.Context, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithBody(c.Server, params, contentType, body)
+func (c *Client) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithBody(c.Server, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -6730,8 +6641,8 @@ func (c *Client) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBody(
 
 // AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8Body performs a POST /v1/availability/product-delivery-information (the `AvailabilityV1StoreProductDeliveryInformationUsingPOST` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type.
-func (c *Client) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx context.Context, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithApplicationJSONCharsetUTF8Body(c.Server, params, body)
+func (c *Client) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx context.Context, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithApplicationJSONCharsetUTF8Body(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -6743,8 +6654,8 @@ func (c *Client) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithAppli
 }
 
 // AvailabilityV1GetDeliveryInformationBySKU performs a GET /v1/availability/product-delivery-information/{sku} (the `AvailabilityV1GetDeliveryInformationBySKU` operationId) request.
-func (c *Client) AvailabilityV1GetDeliveryInformationBySKU(ctx context.Context, sku string, params *AvailabilityV1GetDeliveryInformationBySKUParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAvailabilityV1GetDeliveryInformationBySKURequest(c.Server, sku, params)
+func (c *Client) AvailabilityV1GetDeliveryInformationBySKU(ctx context.Context, sku string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAvailabilityV1GetDeliveryInformationBySKURequest(c.Server, sku)
 	if err != nil {
 		return nil, err
 	}
@@ -6770,8 +6681,8 @@ func (c *Client) AvailabilityV1GetAvailableQuantities(ctx context.Context, param
 
 // AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBody performs a POST /v1/availability/quantities (the `AvailabilityV1StoreAvailableQuantitiesUsingPOST` operationId) request,
 // with any type of body and a specified content type.
-func (c *Client) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBody(ctx context.Context, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithBody(c.Server, params, contentType, body)
+func (c *Client) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithBody(c.Server, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -6784,8 +6695,8 @@ func (c *Client) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBody(ctx con
 
 // AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8Body performs a POST /v1/availability/quantities (the `AvailabilityV1StoreAvailableQuantitiesUsingPOST` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type.
-func (c *Client) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx context.Context, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithApplicationJSONCharsetUTF8Body(c.Server, params, body)
+func (c *Client) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx context.Context, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithApplicationJSONCharsetUTF8Body(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -6797,8 +6708,8 @@ func (c *Client) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJ
 }
 
 // AvailabilityV1GetAvailableQuantityBySku performs a GET /v1/availability/quantities/{sku} (the `AvailabilityV1GetAvailableQuantityBySku` operationId) request.
-func (c *Client) AvailabilityV1GetAvailableQuantityBySku(ctx context.Context, sku string, params *AvailabilityV1GetAvailableQuantityBySkuParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewAvailabilityV1GetAvailableQuantityBySkuRequest(c.Server, sku, params)
+func (c *Client) AvailabilityV1GetAvailableQuantityBySku(ctx context.Context, sku string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewAvailabilityV1GetAvailableQuantityBySkuRequest(c.Server, sku)
 	if err != nil {
 		return nil, err
 	}
@@ -7055,8 +6966,8 @@ func (c *Client) ShippingProfilesV1GetShippingProfiles(ctx context.Context, para
 
 // ShippingProfilesV1CreateShippingProfileWithBody performs a POST /v1/shipping-profiles (the `ShippingProfilesV1CreateShippingProfile` operationId) request,
 // with any type of body and a specified content type.
-func (c *Client) ShippingProfilesV1CreateShippingProfileWithBody(ctx context.Context, params *ShippingProfilesV1CreateShippingProfileParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewShippingProfilesV1CreateShippingProfileRequestWithBody(c.Server, params, contentType, body)
+func (c *Client) ShippingProfilesV1CreateShippingProfileWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewShippingProfilesV1CreateShippingProfileRequestWithBody(c.Server, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7069,8 +6980,8 @@ func (c *Client) ShippingProfilesV1CreateShippingProfileWithBody(ctx context.Con
 
 // ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8Body performs a POST /v1/shipping-profiles (the `ShippingProfilesV1CreateShippingProfile` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type.
-func (c *Client) ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx context.Context, params *ShippingProfilesV1CreateShippingProfileParams, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewShippingProfilesV1CreateShippingProfileRequestWithApplicationJSONCharsetUTF8Body(c.Server, params, body)
+func (c *Client) ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx context.Context, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewShippingProfilesV1CreateShippingProfileRequestWithApplicationJSONCharsetUTF8Body(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7082,8 +6993,8 @@ func (c *Client) ShippingProfilesV1CreateShippingProfileWithApplicationJSONChars
 }
 
 // ShippingProfilesV1DeleteShippingProfile performs a DELETE /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1DeleteShippingProfile` operationId) request.
-func (c *Client) ShippingProfilesV1DeleteShippingProfile(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1DeleteShippingProfileParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewShippingProfilesV1DeleteShippingProfileRequest(c.Server, shippingProfileId, params)
+func (c *Client) ShippingProfilesV1DeleteShippingProfile(ctx context.Context, shippingProfileId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewShippingProfilesV1DeleteShippingProfileRequest(c.Server, shippingProfileId)
 	if err != nil {
 		return nil, err
 	}
@@ -7095,8 +7006,8 @@ func (c *Client) ShippingProfilesV1DeleteShippingProfile(ctx context.Context, sh
 }
 
 // ShippingProfilesV1GetShippingProfileById performs a GET /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1GetShippingProfileById` operationId) request.
-func (c *Client) ShippingProfilesV1GetShippingProfileById(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1GetShippingProfileByIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewShippingProfilesV1GetShippingProfileByIdRequest(c.Server, shippingProfileId, params)
+func (c *Client) ShippingProfilesV1GetShippingProfileById(ctx context.Context, shippingProfileId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewShippingProfilesV1GetShippingProfileByIdRequest(c.Server, shippingProfileId)
 	if err != nil {
 		return nil, err
 	}
@@ -7109,8 +7020,8 @@ func (c *Client) ShippingProfilesV1GetShippingProfileById(ctx context.Context, s
 
 // ShippingProfilesV1UpdateShippingProfileWithBody performs a PUT /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1UpdateShippingProfile` operationId) request,
 // with any type of body and a specified content type.
-func (c *Client) ShippingProfilesV1UpdateShippingProfileWithBody(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewShippingProfilesV1UpdateShippingProfileRequestWithBody(c.Server, shippingProfileId, params, contentType, body)
+func (c *Client) ShippingProfilesV1UpdateShippingProfileWithBody(ctx context.Context, shippingProfileId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewShippingProfilesV1UpdateShippingProfileRequestWithBody(c.Server, shippingProfileId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7123,8 +7034,8 @@ func (c *Client) ShippingProfilesV1UpdateShippingProfileWithBody(ctx context.Con
 
 // ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8Body performs a PUT /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1UpdateShippingProfile` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type.
-func (c *Client) ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewShippingProfilesV1UpdateShippingProfileRequestWithApplicationJSONCharsetUTF8Body(c.Server, shippingProfileId, params, body)
+func (c *Client) ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx context.Context, shippingProfileId string, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewShippingProfilesV1UpdateShippingProfileRequestWithApplicationJSONCharsetUTF8Body(c.Server, shippingProfileId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7597,8 +7508,8 @@ func (c *Client) ReturnsWarehouseV2GetAllReturnsWarehouseAddresses(ctx context.C
 
 // ReturnsWarehouseV2CreateReturnWarehouseAddressWithBody performs a POST /v2/returns-warehouse/addresses (the `ReturnsWarehouseV2CreateReturnWarehouseAddress` operationId) request,
 // with any type of body and a specified content type.
-func (c *Client) ReturnsWarehouseV2CreateReturnWarehouseAddressWithBody(ctx context.Context, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithBody(c.Server, params, contentType, body)
+func (c *Client) ReturnsWarehouseV2CreateReturnWarehouseAddressWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithBody(c.Server, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7611,8 +7522,8 @@ func (c *Client) ReturnsWarehouseV2CreateReturnWarehouseAddressWithBody(ctx cont
 
 // ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body performs a POST /v2/returns-warehouse/addresses (the `ReturnsWarehouseV2CreateReturnWarehouseAddress` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type.
-func (c *Client) ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx context.Context, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body(c.Server, params, body)
+func (c *Client) ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx context.Context, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7624,8 +7535,8 @@ func (c *Client) ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJS
 }
 
 // ReturnsWarehouseV2DeleteReturnsWarehouseAddressById performs a DELETE /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2DeleteReturnsWarehouseAddressById` operationId) request.
-func (c *Client) ReturnsWarehouseV2DeleteReturnsWarehouseAddressById(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdRequest(c.Server, returnAddressId, params)
+func (c *Client) ReturnsWarehouseV2DeleteReturnsWarehouseAddressById(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdRequest(c.Server, returnAddressId)
 	if err != nil {
 		return nil, err
 	}
@@ -7637,8 +7548,8 @@ func (c *Client) ReturnsWarehouseV2DeleteReturnsWarehouseAddressById(ctx context
 }
 
 // ReturnsWarehouseV2GetReturnsWarehouseAddressById performs a GET /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2GetReturnsWarehouseAddressById` operationId) request.
-func (c *Client) ReturnsWarehouseV2GetReturnsWarehouseAddressById(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseAddressByIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2GetReturnsWarehouseAddressByIdRequest(c.Server, returnAddressId, params)
+func (c *Client) ReturnsWarehouseV2GetReturnsWarehouseAddressById(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2GetReturnsWarehouseAddressByIdRequest(c.Server, returnAddressId)
 	if err != nil {
 		return nil, err
 	}
@@ -7651,8 +7562,8 @@ func (c *Client) ReturnsWarehouseV2GetReturnsWarehouseAddressById(ctx context.Co
 
 // ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBody performs a PUT /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2UpdateReturnWarehouseAddress` operationId) request,
 // with any type of body and a specified content type.
-func (c *Client) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBody(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithBody(c.Server, returnAddressId, params, contentType, body)
+func (c *Client) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBody(ctx context.Context, returnAddressId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithBody(c.Server, returnAddressId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7665,8 +7576,8 @@ func (c *Client) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBody(ctx cont
 
 // ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body performs a PUT /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2UpdateReturnWarehouseAddress` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type.
-func (c *Client) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body(c.Server, returnAddressId, params, body)
+func (c *Client) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body(c.Server, returnAddressId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7678,8 +7589,8 @@ func (c *Client) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJS
 }
 
 // ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId performs a GET /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId` operationId) request.
-func (c *Client) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdRequest(c.Server, returnAddressId, params)
+func (c *Client) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdRequest(c.Server, returnAddressId)
 	if err != nil {
 		return nil, err
 	}
@@ -7692,8 +7603,8 @@ func (c *Client) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId(
 
 // ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBody performs a POST /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2CreateReturnsWarehouseCarrier` operationId) request,
 // with any type of body and a specified content type.
-func (c *Client) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBody(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithBody(c.Server, returnAddressId, params, contentType, body)
+func (c *Client) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBody(ctx context.Context, returnAddressId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithBody(c.Server, returnAddressId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7706,8 +7617,8 @@ func (c *Client) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBody(ctx con
 
 // ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8Body performs a POST /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2CreateReturnsWarehouseCarrier` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type.
-func (c *Client) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithApplicationJSONCharsetUTF8Body(c.Server, returnAddressId, params, body)
+func (c *Client) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithApplicationJSONCharsetUTF8Body(c.Server, returnAddressId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7719,8 +7630,8 @@ func (c *Client) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJ
 }
 
 // ReturnsWarehouseV2DeleteParcelReturnCarrier performs a DELETE /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2DeleteParcelReturnCarrier` operationId) request.
-func (c *Client) ReturnsWarehouseV2DeleteParcelReturnCarrier(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2DeleteParcelReturnCarrierParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2DeleteParcelReturnCarrierRequest(c.Server, returnAddressId, returnAddressCarrierId, params)
+func (c *Client) ReturnsWarehouseV2DeleteParcelReturnCarrier(ctx context.Context, returnAddressId string, returnAddressCarrierId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2DeleteParcelReturnCarrierRequest(c.Server, returnAddressId, returnAddressCarrierId)
 	if err != nil {
 		return nil, err
 	}
@@ -7732,8 +7643,8 @@ func (c *Client) ReturnsWarehouseV2DeleteParcelReturnCarrier(ctx context.Context
 }
 
 // ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId performs a GET /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId` operationId) request.
-func (c *Client) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdRequest(c.Server, returnAddressId, returnAddressCarrierId, params)
+func (c *Client) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId(ctx context.Context, returnAddressId string, returnAddressCarrierId string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdRequest(c.Server, returnAddressId, returnAddressCarrierId)
 	if err != nil {
 		return nil, err
 	}
@@ -7746,8 +7657,8 @@ func (c *Client) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdA
 
 // ReturnsWarehouseV2UpdateParcelReturnCarrierWithBody performs a PUT /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2UpdateParcelReturnCarrier` operationId) request,
 // with any type of body and a specified content type.
-func (c *Client) ReturnsWarehouseV2UpdateParcelReturnCarrierWithBody(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithBody(c.Server, returnAddressId, returnAddressCarrierId, params, contentType, body)
+func (c *Client) ReturnsWarehouseV2UpdateParcelReturnCarrierWithBody(ctx context.Context, returnAddressId string, returnAddressCarrierId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithBody(c.Server, returnAddressId, returnAddressCarrierId, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -7760,8 +7671,8 @@ func (c *Client) ReturnsWarehouseV2UpdateParcelReturnCarrierWithBody(ctx context
 
 // ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8Body performs a PUT /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2UpdateParcelReturnCarrier` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type.
-func (c *Client) ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithApplicationJSONCharsetUTF8Body(c.Server, returnAddressId, returnAddressCarrierId, params, body)
+func (c *Client) ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8Body(ctx context.Context, returnAddressId string, returnAddressCarrierId string, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithApplicationJSONCharsetUTF8Body(c.Server, returnAddressId, returnAddressCarrierId, body)
 	if err != nil {
 		return nil, err
 	}
@@ -8300,35 +8211,22 @@ func NewAvailabilityV1GetProductDeliveryInformationRequest(server string, params
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithApplicationJSONCharsetUTF8Body calls the generic AvailabilityV1StoreProductDeliveryInformationUsingPOST builder with application/json;charset=UTF-8 body
-func NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithApplicationJSONCharsetUTF8Body(server string, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
+func NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithApplicationJSONCharsetUTF8Body(server string, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithBody(server, params, "application/json;charset=UTF-8", bodyReader)
+	return NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithBody(server, "application/json;charset=UTF-8", bodyReader)
 }
 
 // NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithBody constructs an http.Request for the AvailabilityV1StoreProductDeliveryInformationUsingPOST method, with any body, and a specified content type
-func NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithBody(server string, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -8353,24 +8251,11 @@ func NewAvailabilityV1StoreProductDeliveryInformationUsingPOSTRequestWithBody(se
 
 	req.Header.Add("Content-Type", contentType)
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewAvailabilityV1GetDeliveryInformationBySKURequest constructs an http.Request for the AvailabilityV1GetDeliveryInformationBySKU method
-func NewAvailabilityV1GetDeliveryInformationBySKURequest(server string, sku string, params *AvailabilityV1GetDeliveryInformationBySKUParams) (*http.Request, error) {
+func NewAvailabilityV1GetDeliveryInformationBySKURequest(server string, sku string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -8398,19 +8283,6 @@ func NewAvailabilityV1GetDeliveryInformationBySKURequest(server string, sku stri
 	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
 	if err != nil {
 		return nil, err
-	}
-
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
 	}
 
 	return req, nil
@@ -8491,35 +8363,22 @@ func NewAvailabilityV1GetAvailableQuantitiesRequest(server string, params *Avail
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithApplicationJSONCharsetUTF8Body calls the generic AvailabilityV1StoreAvailableQuantitiesUsingPOST builder with application/json;charset=UTF-8 body
-func NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithApplicationJSONCharsetUTF8Body(server string, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
+func NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithApplicationJSONCharsetUTF8Body(server string, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithBody(server, params, "application/json;charset=UTF-8", bodyReader)
+	return NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithBody(server, "application/json;charset=UTF-8", bodyReader)
 }
 
 // NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithBody constructs an http.Request for the AvailabilityV1StoreAvailableQuantitiesUsingPOST method, with any body, and a specified content type
-func NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithBody(server string, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -8544,24 +8403,11 @@ func NewAvailabilityV1StoreAvailableQuantitiesUsingPOSTRequestWithBody(server st
 
 	req.Header.Add("Content-Type", contentType)
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewAvailabilityV1GetAvailableQuantityBySkuRequest constructs an http.Request for the AvailabilityV1GetAvailableQuantityBySku method
-func NewAvailabilityV1GetAvailableQuantityBySkuRequest(server string, sku string, params *AvailabilityV1GetAvailableQuantityBySkuParams) (*http.Request, error) {
+func NewAvailabilityV1GetAvailableQuantityBySkuRequest(server string, sku string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -8589,19 +8435,6 @@ func NewAvailabilityV1GetAvailableQuantityBySkuRequest(server string, sku string
 	req, err := http.NewRequest(http.MethodGet, queryURL.String(), nil)
 	if err != nil {
 		return nil, err
-	}
-
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
 	}
 
 	return req, nil
@@ -9255,35 +9088,22 @@ func NewShippingProfilesV1GetShippingProfilesRequest(server string, params *Ship
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewShippingProfilesV1CreateShippingProfileRequestWithApplicationJSONCharsetUTF8Body calls the generic ShippingProfilesV1CreateShippingProfile builder with application/json;charset=UTF-8 body
-func NewShippingProfilesV1CreateShippingProfileRequestWithApplicationJSONCharsetUTF8Body(server string, params *ShippingProfilesV1CreateShippingProfileParams, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
+func NewShippingProfilesV1CreateShippingProfileRequestWithApplicationJSONCharsetUTF8Body(server string, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewShippingProfilesV1CreateShippingProfileRequestWithBody(server, params, "application/json;charset=UTF-8", bodyReader)
+	return NewShippingProfilesV1CreateShippingProfileRequestWithBody(server, "application/json;charset=UTF-8", bodyReader)
 }
 
 // NewShippingProfilesV1CreateShippingProfileRequestWithBody constructs an http.Request for the ShippingProfilesV1CreateShippingProfile method, with any body, and a specified content type
-func NewShippingProfilesV1CreateShippingProfileRequestWithBody(server string, params *ShippingProfilesV1CreateShippingProfileParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewShippingProfilesV1CreateShippingProfileRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -9308,24 +9128,11 @@ func NewShippingProfilesV1CreateShippingProfileRequestWithBody(server string, pa
 
 	req.Header.Add("Content-Type", contentType)
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewShippingProfilesV1DeleteShippingProfileRequest constructs an http.Request for the ShippingProfilesV1DeleteShippingProfile method
-func NewShippingProfilesV1DeleteShippingProfileRequest(server string, shippingProfileId string, params *ShippingProfilesV1DeleteShippingProfileParams) (*http.Request, error) {
+func NewShippingProfilesV1DeleteShippingProfileRequest(server string, shippingProfileId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9355,24 +9162,11 @@ func NewShippingProfilesV1DeleteShippingProfileRequest(server string, shippingPr
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewShippingProfilesV1GetShippingProfileByIdRequest constructs an http.Request for the ShippingProfilesV1GetShippingProfileById method
-func NewShippingProfilesV1GetShippingProfileByIdRequest(server string, shippingProfileId string, params *ShippingProfilesV1GetShippingProfileByIdParams) (*http.Request, error) {
+func NewShippingProfilesV1GetShippingProfileByIdRequest(server string, shippingProfileId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9402,35 +9196,22 @@ func NewShippingProfilesV1GetShippingProfileByIdRequest(server string, shippingP
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewShippingProfilesV1UpdateShippingProfileRequestWithApplicationJSONCharsetUTF8Body calls the generic ShippingProfilesV1UpdateShippingProfile builder with application/json;charset=UTF-8 body
-func NewShippingProfilesV1UpdateShippingProfileRequestWithApplicationJSONCharsetUTF8Body(server string, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
+func NewShippingProfilesV1UpdateShippingProfileRequestWithApplicationJSONCharsetUTF8Body(server string, shippingProfileId string, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewShippingProfilesV1UpdateShippingProfileRequestWithBody(server, shippingProfileId, params, "application/json;charset=UTF-8", bodyReader)
+	return NewShippingProfilesV1UpdateShippingProfileRequestWithBody(server, shippingProfileId, "application/json;charset=UTF-8", bodyReader)
 }
 
 // NewShippingProfilesV1UpdateShippingProfileRequestWithBody constructs an http.Request for the ShippingProfilesV1UpdateShippingProfile method, with any body, and a specified content type
-func NewShippingProfilesV1UpdateShippingProfileRequestWithBody(server string, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewShippingProfilesV1UpdateShippingProfileRequestWithBody(server string, shippingProfileId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -9461,19 +9242,6 @@ func NewShippingProfilesV1UpdateShippingProfileRequestWithBody(server string, sh
 	}
 
 	req.Header.Add("Content-Type", contentType)
-
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
 
 	return req, nil
 }
@@ -10823,35 +10591,22 @@ func NewReturnsWarehouseV2GetAllReturnsWarehouseAddressesRequest(server string, 
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body calls the generic ReturnsWarehouseV2CreateReturnWarehouseAddress builder with application/json;charset=UTF-8 body
-func NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body(server string, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
+func NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body(server string, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithBody(server, params, "application/json;charset=UTF-8", bodyReader)
+	return NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithBody(server, "application/json;charset=UTF-8", bodyReader)
 }
 
 // NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithBody constructs an http.Request for the ReturnsWarehouseV2CreateReturnWarehouseAddress method, with any body, and a specified content type
-func NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithBody(server string, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -10876,24 +10631,11 @@ func NewReturnsWarehouseV2CreateReturnWarehouseAddressRequestWithBody(server str
 
 	req.Header.Add("Content-Type", contentType)
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdRequest constructs an http.Request for the ReturnsWarehouseV2DeleteReturnsWarehouseAddressById method
-func NewReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdRequest(server string, returnAddressId string, params *ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdParams) (*http.Request, error) {
+func NewReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdRequest(server string, returnAddressId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10923,24 +10665,11 @@ func NewReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdRequest(server string
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewReturnsWarehouseV2GetReturnsWarehouseAddressByIdRequest constructs an http.Request for the ReturnsWarehouseV2GetReturnsWarehouseAddressById method
-func NewReturnsWarehouseV2GetReturnsWarehouseAddressByIdRequest(server string, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseAddressByIdParams) (*http.Request, error) {
+func NewReturnsWarehouseV2GetReturnsWarehouseAddressByIdRequest(server string, returnAddressId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -10970,35 +10699,22 @@ func NewReturnsWarehouseV2GetReturnsWarehouseAddressByIdRequest(server string, r
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body calls the generic ReturnsWarehouseV2UpdateReturnWarehouseAddress builder with application/json;charset=UTF-8 body
-func NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body(server string, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
+func NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithApplicationJSONCharsetUTF8Body(server string, returnAddressId string, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithBody(server, returnAddressId, params, "application/json;charset=UTF-8", bodyReader)
+	return NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithBody(server, returnAddressId, "application/json;charset=UTF-8", bodyReader)
 }
 
 // NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithBody constructs an http.Request for the ReturnsWarehouseV2UpdateReturnWarehouseAddress method, with any body, and a specified content type
-func NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithBody(server string, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithBody(server string, returnAddressId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -11030,24 +10746,11 @@ func NewReturnsWarehouseV2UpdateReturnWarehouseAddressRequestWithBody(server str
 
 	req.Header.Add("Content-Type", contentType)
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdRequest constructs an http.Request for the ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId method
-func NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdRequest(server string, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdParams) (*http.Request, error) {
+func NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdRequest(server string, returnAddressId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -11077,35 +10780,22 @@ func NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdRequest(se
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithApplicationJSONCharsetUTF8Body calls the generic ReturnsWarehouseV2CreateReturnsWarehouseCarrier builder with application/json;charset=UTF-8 body
-func NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithApplicationJSONCharsetUTF8Body(server string, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
+func NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithApplicationJSONCharsetUTF8Body(server string, returnAddressId string, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithBody(server, returnAddressId, params, "application/json;charset=UTF-8", bodyReader)
+	return NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithBody(server, returnAddressId, "application/json;charset=UTF-8", bodyReader)
 }
 
 // NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithBody constructs an http.Request for the ReturnsWarehouseV2CreateReturnsWarehouseCarrier method, with any body, and a specified content type
-func NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithBody(server string, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithBody(server string, returnAddressId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -11137,24 +10827,11 @@ func NewReturnsWarehouseV2CreateReturnsWarehouseCarrierRequestWithBody(server st
 
 	req.Header.Add("Content-Type", contentType)
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewReturnsWarehouseV2DeleteParcelReturnCarrierRequest constructs an http.Request for the ReturnsWarehouseV2DeleteParcelReturnCarrier method
-func NewReturnsWarehouseV2DeleteParcelReturnCarrierRequest(server string, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2DeleteParcelReturnCarrierParams) (*http.Request, error) {
+func NewReturnsWarehouseV2DeleteParcelReturnCarrierRequest(server string, returnAddressId string, returnAddressCarrierId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -11191,24 +10868,11 @@ func NewReturnsWarehouseV2DeleteParcelReturnCarrierRequest(server string, return
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdRequest constructs an http.Request for the ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId method
-func NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdRequest(server string, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdParams) (*http.Request, error) {
+func NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdRequest(server string, returnAddressId string, returnAddressCarrierId string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -11245,35 +10909,22 @@ func NewReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnA
 		return nil, err
 	}
 
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
-
 	return req, nil
 }
 
 // NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithApplicationJSONCharsetUTF8Body calls the generic ReturnsWarehouseV2UpdateParcelReturnCarrier builder with application/json;charset=UTF-8 body
-func NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithApplicationJSONCharsetUTF8Body(server string, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
+func NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithApplicationJSONCharsetUTF8Body(server string, returnAddressId string, returnAddressCarrierId string, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithBody(server, returnAddressId, returnAddressCarrierId, params, "application/json;charset=UTF-8", bodyReader)
+	return NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithBody(server, returnAddressId, returnAddressCarrierId, "application/json;charset=UTF-8", bodyReader)
 }
 
 // NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithBody constructs an http.Request for the ReturnsWarehouseV2UpdateParcelReturnCarrier method, with any body, and a specified content type
-func NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithBody(server string, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, contentType string, body io.Reader) (*http.Request, error) {
+func NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithBody(server string, returnAddressId string, returnAddressCarrierId string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -11311,19 +10962,6 @@ func NewReturnsWarehouseV2UpdateParcelReturnCarrierRequestWithBody(server string
 	}
 
 	req.Header.Add("Content-Type", contentType)
-
-	if params != nil {
-
-		var headerParam0 string
-
-		headerParam0, err = runtime.StyleParamWithOptions("simple", false, "Authorization", params.Authorization, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationHeader, Type: "string", Format: ""})
-		if err != nil {
-			return nil, err
-		}
-
-		req.Header.Set("Authorization", headerParam0)
-
-	}
 
 	return req, nil
 }
@@ -13322,16 +12960,16 @@ type ClientWithResponsesInterface interface {
 	// with any type of body and a specified content type.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBodyWithResponse(ctx context.Context, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreProductDeliveryInformationUsingPOSTResponse, error)
+	AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreProductDeliveryInformationUsingPOSTResponse, error)
 
 	// AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v1/availability/product-delivery-information (the `AvailabilityV1StoreProductDeliveryInformationUsingPOST` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-	AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreProductDeliveryInformationUsingPOSTResponse, error)
+	AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreProductDeliveryInformationUsingPOSTResponse, error)
 
 	// AvailabilityV1GetDeliveryInformationBySKUWithResponse performs a GET /v1/availability/product-delivery-information/{sku} (the `AvailabilityV1GetDeliveryInformationBySKU` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	AvailabilityV1GetDeliveryInformationBySKUWithResponse(ctx context.Context, sku string, params *AvailabilityV1GetDeliveryInformationBySKUParams, reqEditors ...RequestEditorFn) (*AvailabilityV1GetDeliveryInformationBySKUResponse, error)
+	AvailabilityV1GetDeliveryInformationBySKUWithResponse(ctx context.Context, sku string, reqEditors ...RequestEditorFn) (*AvailabilityV1GetDeliveryInformationBySKUResponse, error)
 
 	// AvailabilityV1GetAvailableQuantitiesWithResponse performs a GET /v1/availability/quantities (the `AvailabilityV1GetAvailableQuantities` operationId) request.
 	//
@@ -13342,16 +12980,16 @@ type ClientWithResponsesInterface interface {
 	// with any type of body and a specified content type.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBodyWithResponse(ctx context.Context, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreAvailableQuantitiesUsingPOSTResponse, error)
+	AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreAvailableQuantitiesUsingPOSTResponse, error)
 
 	// AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v1/availability/quantities (the `AvailabilityV1StoreAvailableQuantitiesUsingPOST` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-	AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreAvailableQuantitiesUsingPOSTResponse, error)
+	AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreAvailableQuantitiesUsingPOSTResponse, error)
 
 	// AvailabilityV1GetAvailableQuantityBySkuWithResponse performs a GET /v1/availability/quantities/{sku} (the `AvailabilityV1GetAvailableQuantityBySku` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	AvailabilityV1GetAvailableQuantityBySkuWithResponse(ctx context.Context, sku string, params *AvailabilityV1GetAvailableQuantityBySkuParams, reqEditors ...RequestEditorFn) (*AvailabilityV1GetAvailableQuantityBySkuResponse, error)
+	AvailabilityV1GetAvailableQuantityBySkuWithResponse(ctx context.Context, sku string, reqEditors ...RequestEditorFn) (*AvailabilityV1GetAvailableQuantityBySkuResponse, error)
 
 	// ShipmentsV1CreatedAndSentMultiparcelShipmentUsingPOSTWithBodyWithResponse performs a POST /v1/multiparcel-shipments (the `ShipmentsV1CreatedAndSentMultiparcelShipmentUsingPOST` operationId) request,
 	// with any type of body and a specified content type.
@@ -13447,31 +13085,31 @@ type ClientWithResponsesInterface interface {
 	// with any type of body and a specified content type.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ShippingProfilesV1CreateShippingProfileWithBodyWithResponse(ctx context.Context, params *ShippingProfilesV1CreateShippingProfileParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ShippingProfilesV1CreateShippingProfileResponse, error)
+	ShippingProfilesV1CreateShippingProfileWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ShippingProfilesV1CreateShippingProfileResponse, error)
 
 	// ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v1/shipping-profiles (the `ShippingProfilesV1CreateShippingProfile` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-	ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, params *ShippingProfilesV1CreateShippingProfileParams, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ShippingProfilesV1CreateShippingProfileResponse, error)
+	ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ShippingProfilesV1CreateShippingProfileResponse, error)
 
 	// ShippingProfilesV1DeleteShippingProfileWithResponse performs a DELETE /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1DeleteShippingProfile` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ShippingProfilesV1DeleteShippingProfileWithResponse(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1DeleteShippingProfileParams, reqEditors ...RequestEditorFn) (*ShippingProfilesV1DeleteShippingProfileResponse, error)
+	ShippingProfilesV1DeleteShippingProfileWithResponse(ctx context.Context, shippingProfileId string, reqEditors ...RequestEditorFn) (*ShippingProfilesV1DeleteShippingProfileResponse, error)
 
 	// ShippingProfilesV1GetShippingProfileByIdWithResponse performs a GET /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1GetShippingProfileById` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ShippingProfilesV1GetShippingProfileByIdWithResponse(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1GetShippingProfileByIdParams, reqEditors ...RequestEditorFn) (*ShippingProfilesV1GetShippingProfileByIdResponse, error)
+	ShippingProfilesV1GetShippingProfileByIdWithResponse(ctx context.Context, shippingProfileId string, reqEditors ...RequestEditorFn) (*ShippingProfilesV1GetShippingProfileByIdResponse, error)
 
 	// ShippingProfilesV1UpdateShippingProfileWithBodyWithResponse performs a PUT /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1UpdateShippingProfile` operationId) request,
 	// with any type of body and a specified content type.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ShippingProfilesV1UpdateShippingProfileWithBodyWithResponse(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ShippingProfilesV1UpdateShippingProfileResponse, error)
+	ShippingProfilesV1UpdateShippingProfileWithBodyWithResponse(ctx context.Context, shippingProfileId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ShippingProfilesV1UpdateShippingProfileResponse, error)
 
 	// ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse performs a PUT /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1UpdateShippingProfile` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-	ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ShippingProfilesV1UpdateShippingProfileResponse, error)
+	ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, shippingProfileId string, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ShippingProfilesV1UpdateShippingProfileResponse, error)
 
 	// SponsoredProductAdsReportingV1GetCampaignPerformanceV1SpaReportingCampaignPerformanceGetWithResponse performs a GET /v1/spa-reporting/campaign-performance (the `SponsoredProductAdsReportingV1GetCampaignPerformanceV1SpaReportingCampaignPerformanceGet` operationId) request.
 	//
@@ -13647,66 +13285,66 @@ type ClientWithResponsesInterface interface {
 	// with any type of body and a specified content type.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2CreateReturnWarehouseAddressWithBodyWithResponse(ctx context.Context, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnWarehouseAddressResponse, error)
+	ReturnsWarehouseV2CreateReturnWarehouseAddressWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnWarehouseAddressResponse, error)
 
 	// ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v2/returns-warehouse/addresses (the `ReturnsWarehouseV2CreateReturnWarehouseAddress` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnWarehouseAddressResponse, error)
+	ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnWarehouseAddressResponse, error)
 
 	// ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdWithResponse performs a DELETE /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2DeleteReturnsWarehouseAddressById` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdResponse, error)
+	ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdWithResponse(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdResponse, error)
 
 	// ReturnsWarehouseV2GetReturnsWarehouseAddressByIdWithResponse performs a GET /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2GetReturnsWarehouseAddressById` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2GetReturnsWarehouseAddressByIdWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseAddressByIdParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseAddressByIdResponse, error)
+	ReturnsWarehouseV2GetReturnsWarehouseAddressByIdWithResponse(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseAddressByIdResponse, error)
 
 	// ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBodyWithResponse performs a PUT /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2UpdateReturnWarehouseAddress` operationId) request,
 	// with any type of body and a specified content type.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBodyWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateReturnWarehouseAddressResponse, error)
+	ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBodyWithResponse(ctx context.Context, returnAddressId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateReturnWarehouseAddressResponse, error)
 
 	// ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse performs a PUT /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2UpdateReturnWarehouseAddress` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateReturnWarehouseAddressResponse, error)
+	ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateReturnWarehouseAddressResponse, error)
 
 	// ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdWithResponse performs a GET /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdResponse, error)
+	ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdWithResponse(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdResponse, error)
 
 	// ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBodyWithResponse performs a POST /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2CreateReturnsWarehouseCarrier` operationId) request,
 	// with any type of body and a specified content type.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBodyWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnsWarehouseCarrierResponse, error)
+	ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBodyWithResponse(ctx context.Context, returnAddressId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnsWarehouseCarrierResponse, error)
 
 	// ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2CreateReturnsWarehouseCarrier` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnsWarehouseCarrierResponse, error)
+	ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnsWarehouseCarrierResponse, error)
 
 	// ReturnsWarehouseV2DeleteParcelReturnCarrierWithResponse performs a DELETE /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2DeleteParcelReturnCarrier` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2DeleteParcelReturnCarrierWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2DeleteParcelReturnCarrierParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2DeleteParcelReturnCarrierResponse, error)
+	ReturnsWarehouseV2DeleteParcelReturnCarrierWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2DeleteParcelReturnCarrierResponse, error)
 
 	// ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdWithResponse performs a GET /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId` operationId) request.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdResponse, error)
+	ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdResponse, error)
 
 	// ReturnsWarehouseV2UpdateParcelReturnCarrierWithBodyWithResponse performs a PUT /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2UpdateParcelReturnCarrier` operationId) request,
 	// with any type of body and a specified content type.
 	//
 	// Returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2UpdateParcelReturnCarrierWithBodyWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateParcelReturnCarrierResponse, error)
+	ReturnsWarehouseV2UpdateParcelReturnCarrierWithBodyWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateParcelReturnCarrierResponse, error)
 
 	// ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8BodyWithResponse performs a PUT /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2UpdateParcelReturnCarrier` operationId) request.
 	// Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-	ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateParcelReturnCarrierResponse, error)
+	ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateParcelReturnCarrierResponse, error)
 
 	// ReceiptsV3GetReceiptsUsingGET5WithResponse performs a GET /v3/receipts (the `ReceiptsV3GetReceiptsUsingGET5` operationId) request.
 	//
@@ -19060,8 +18698,8 @@ func (c *ClientWithResponses) AvailabilityV1GetProductDeliveryInformationWithRes
 // with any type of body and a specified content type.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBodyWithResponse(ctx context.Context, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreProductDeliveryInformationUsingPOSTResponse, error) {
-	rsp, err := c.AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBody(ctx, params, contentType, body, reqEditors...)
+func (c *ClientWithResponses) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreProductDeliveryInformationUsingPOSTResponse, error) {
+	rsp, err := c.AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithBody(ctx, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19070,8 +18708,8 @@ func (c *ClientWithResponses) AvailabilityV1StoreProductDeliveryInformationUsing
 
 // AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v1/availability/product-delivery-information (the `AvailabilityV1StoreProductDeliveryInformationUsingPOST` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, params *AvailabilityV1StoreProductDeliveryInformationUsingPOSTParams, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreProductDeliveryInformationUsingPOSTResponse, error) {
-	rsp, err := c.AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx, params, body, reqEditors...)
+func (c *ClientWithResponses) AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, body AvailabilityV1StoreProductDeliveryInformationUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreProductDeliveryInformationUsingPOSTResponse, error) {
+	rsp, err := c.AvailabilityV1StoreProductDeliveryInformationUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19081,8 +18719,8 @@ func (c *ClientWithResponses) AvailabilityV1StoreProductDeliveryInformationUsing
 // AvailabilityV1GetDeliveryInformationBySKUWithResponse performs a GET /v1/availability/product-delivery-information/{sku} (the `AvailabilityV1GetDeliveryInformationBySKU` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) AvailabilityV1GetDeliveryInformationBySKUWithResponse(ctx context.Context, sku string, params *AvailabilityV1GetDeliveryInformationBySKUParams, reqEditors ...RequestEditorFn) (*AvailabilityV1GetDeliveryInformationBySKUResponse, error) {
-	rsp, err := c.AvailabilityV1GetDeliveryInformationBySKU(ctx, sku, params, reqEditors...)
+func (c *ClientWithResponses) AvailabilityV1GetDeliveryInformationBySKUWithResponse(ctx context.Context, sku string, reqEditors ...RequestEditorFn) (*AvailabilityV1GetDeliveryInformationBySKUResponse, error) {
+	rsp, err := c.AvailabilityV1GetDeliveryInformationBySKU(ctx, sku, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19104,8 +18742,8 @@ func (c *ClientWithResponses) AvailabilityV1GetAvailableQuantitiesWithResponse(c
 // with any type of body and a specified content type.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBodyWithResponse(ctx context.Context, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreAvailableQuantitiesUsingPOSTResponse, error) {
-	rsp, err := c.AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBody(ctx, params, contentType, body, reqEditors...)
+func (c *ClientWithResponses) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreAvailableQuantitiesUsingPOSTResponse, error) {
+	rsp, err := c.AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithBody(ctx, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19114,8 +18752,8 @@ func (c *ClientWithResponses) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWit
 
 // AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v1/availability/quantities (the `AvailabilityV1StoreAvailableQuantitiesUsingPOST` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, params *AvailabilityV1StoreAvailableQuantitiesUsingPOSTParams, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreAvailableQuantitiesUsingPOSTResponse, error) {
-	rsp, err := c.AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx, params, body, reqEditors...)
+func (c *ClientWithResponses) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, body AvailabilityV1StoreAvailableQuantitiesUsingPOSTApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*AvailabilityV1StoreAvailableQuantitiesUsingPOSTResponse, error) {
+	rsp, err := c.AvailabilityV1StoreAvailableQuantitiesUsingPOSTWithApplicationJSONCharsetUTF8Body(ctx, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19125,8 +18763,8 @@ func (c *ClientWithResponses) AvailabilityV1StoreAvailableQuantitiesUsingPOSTWit
 // AvailabilityV1GetAvailableQuantityBySkuWithResponse performs a GET /v1/availability/quantities/{sku} (the `AvailabilityV1GetAvailableQuantityBySku` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) AvailabilityV1GetAvailableQuantityBySkuWithResponse(ctx context.Context, sku string, params *AvailabilityV1GetAvailableQuantityBySkuParams, reqEditors ...RequestEditorFn) (*AvailabilityV1GetAvailableQuantityBySkuResponse, error) {
-	rsp, err := c.AvailabilityV1GetAvailableQuantityBySku(ctx, sku, params, reqEditors...)
+func (c *ClientWithResponses) AvailabilityV1GetAvailableQuantityBySkuWithResponse(ctx context.Context, sku string, reqEditors ...RequestEditorFn) (*AvailabilityV1GetAvailableQuantityBySkuResponse, error) {
+	rsp, err := c.AvailabilityV1GetAvailableQuantityBySku(ctx, sku, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19335,8 +18973,8 @@ func (c *ClientWithResponses) ShippingProfilesV1GetShippingProfilesWithResponse(
 // with any type of body and a specified content type.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ShippingProfilesV1CreateShippingProfileWithBodyWithResponse(ctx context.Context, params *ShippingProfilesV1CreateShippingProfileParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ShippingProfilesV1CreateShippingProfileResponse, error) {
-	rsp, err := c.ShippingProfilesV1CreateShippingProfileWithBody(ctx, params, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ShippingProfilesV1CreateShippingProfileWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ShippingProfilesV1CreateShippingProfileResponse, error) {
+	rsp, err := c.ShippingProfilesV1CreateShippingProfileWithBody(ctx, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19345,8 +18983,8 @@ func (c *ClientWithResponses) ShippingProfilesV1CreateShippingProfileWithBodyWit
 
 // ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v1/shipping-profiles (the `ShippingProfilesV1CreateShippingProfile` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, params *ShippingProfilesV1CreateShippingProfileParams, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ShippingProfilesV1CreateShippingProfileResponse, error) {
-	rsp, err := c.ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx, params, body, reqEditors...)
+func (c *ClientWithResponses) ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, body ShippingProfilesV1CreateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ShippingProfilesV1CreateShippingProfileResponse, error) {
+	rsp, err := c.ShippingProfilesV1CreateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19356,8 +18994,8 @@ func (c *ClientWithResponses) ShippingProfilesV1CreateShippingProfileWithApplica
 // ShippingProfilesV1DeleteShippingProfileWithResponse performs a DELETE /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1DeleteShippingProfile` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ShippingProfilesV1DeleteShippingProfileWithResponse(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1DeleteShippingProfileParams, reqEditors ...RequestEditorFn) (*ShippingProfilesV1DeleteShippingProfileResponse, error) {
-	rsp, err := c.ShippingProfilesV1DeleteShippingProfile(ctx, shippingProfileId, params, reqEditors...)
+func (c *ClientWithResponses) ShippingProfilesV1DeleteShippingProfileWithResponse(ctx context.Context, shippingProfileId string, reqEditors ...RequestEditorFn) (*ShippingProfilesV1DeleteShippingProfileResponse, error) {
+	rsp, err := c.ShippingProfilesV1DeleteShippingProfile(ctx, shippingProfileId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19367,8 +19005,8 @@ func (c *ClientWithResponses) ShippingProfilesV1DeleteShippingProfileWithRespons
 // ShippingProfilesV1GetShippingProfileByIdWithResponse performs a GET /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1GetShippingProfileById` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ShippingProfilesV1GetShippingProfileByIdWithResponse(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1GetShippingProfileByIdParams, reqEditors ...RequestEditorFn) (*ShippingProfilesV1GetShippingProfileByIdResponse, error) {
-	rsp, err := c.ShippingProfilesV1GetShippingProfileById(ctx, shippingProfileId, params, reqEditors...)
+func (c *ClientWithResponses) ShippingProfilesV1GetShippingProfileByIdWithResponse(ctx context.Context, shippingProfileId string, reqEditors ...RequestEditorFn) (*ShippingProfilesV1GetShippingProfileByIdResponse, error) {
+	rsp, err := c.ShippingProfilesV1GetShippingProfileById(ctx, shippingProfileId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19379,8 +19017,8 @@ func (c *ClientWithResponses) ShippingProfilesV1GetShippingProfileByIdWithRespon
 // with any type of body and a specified content type.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ShippingProfilesV1UpdateShippingProfileWithBodyWithResponse(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ShippingProfilesV1UpdateShippingProfileResponse, error) {
-	rsp, err := c.ShippingProfilesV1UpdateShippingProfileWithBody(ctx, shippingProfileId, params, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ShippingProfilesV1UpdateShippingProfileWithBodyWithResponse(ctx context.Context, shippingProfileId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ShippingProfilesV1UpdateShippingProfileResponse, error) {
+	rsp, err := c.ShippingProfilesV1UpdateShippingProfileWithBody(ctx, shippingProfileId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19389,8 +19027,8 @@ func (c *ClientWithResponses) ShippingProfilesV1UpdateShippingProfileWithBodyWit
 
 // ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse performs a PUT /v1/shipping-profiles/{shippingProfileId} (the `ShippingProfilesV1UpdateShippingProfile` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, shippingProfileId string, params *ShippingProfilesV1UpdateShippingProfileParams, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ShippingProfilesV1UpdateShippingProfileResponse, error) {
-	rsp, err := c.ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx, shippingProfileId, params, body, reqEditors...)
+func (c *ClientWithResponses) ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, shippingProfileId string, body ShippingProfilesV1UpdateShippingProfileApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ShippingProfilesV1UpdateShippingProfileResponse, error) {
+	rsp, err := c.ShippingProfilesV1UpdateShippingProfileWithApplicationJSONCharsetUTF8Body(ctx, shippingProfileId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19775,8 +19413,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2GetAllReturnsWarehouseAddressesW
 // with any type of body and a specified content type.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnWarehouseAddressWithBodyWithResponse(ctx context.Context, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnWarehouseAddressResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2CreateReturnWarehouseAddressWithBody(ctx, params, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnWarehouseAddressWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnWarehouseAddressResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2CreateReturnWarehouseAddressWithBody(ctx, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19785,8 +19423,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnWarehouseAddressWith
 
 // ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v2/returns-warehouse/addresses (the `ReturnsWarehouseV2CreateReturnWarehouseAddress` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, params *ReturnsWarehouseV2CreateReturnWarehouseAddressParams, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnWarehouseAddressResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx, params, body, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, body ReturnsWarehouseV2CreateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnWarehouseAddressResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2CreateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19796,8 +19434,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnWarehouseAddressWith
 // ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdWithResponse performs a DELETE /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2DeleteReturnsWarehouseAddressById` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2DeleteReturnsWarehouseAddressById(ctx, returnAddressId, params, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdWithResponse(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2DeleteReturnsWarehouseAddressByIdResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2DeleteReturnsWarehouseAddressById(ctx, returnAddressId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19807,8 +19445,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2DeleteReturnsWarehouseAddressByI
 // ReturnsWarehouseV2GetReturnsWarehouseAddressByIdWithResponse performs a GET /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2GetReturnsWarehouseAddressById` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2GetReturnsWarehouseAddressByIdWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseAddressByIdParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseAddressByIdResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2GetReturnsWarehouseAddressById(ctx, returnAddressId, params, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2GetReturnsWarehouseAddressByIdWithResponse(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseAddressByIdResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2GetReturnsWarehouseAddressById(ctx, returnAddressId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19819,8 +19457,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2GetReturnsWarehouseAddressByIdWi
 // with any type of body and a specified content type.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBodyWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateReturnWarehouseAddressResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBody(ctx, returnAddressId, params, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBodyWithResponse(ctx context.Context, returnAddressId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateReturnWarehouseAddressResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2UpdateReturnWarehouseAddressWithBody(ctx, returnAddressId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19829,8 +19467,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2UpdateReturnWarehouseAddressWith
 
 // ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse performs a PUT /v2/returns-warehouse/addresses/{returnAddressId} (the `ReturnsWarehouseV2UpdateReturnWarehouseAddress` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2UpdateReturnWarehouseAddressParams, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateReturnWarehouseAddressResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx, returnAddressId, params, body, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, body ReturnsWarehouseV2UpdateReturnWarehouseAddressApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateReturnWarehouseAddressResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2UpdateReturnWarehouseAddressWithApplicationJSONCharsetUTF8Body(ctx, returnAddressId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19840,8 +19478,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2UpdateReturnWarehouseAddressWith
 // ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdWithResponse performs a GET /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId(ctx, returnAddressId, params, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdWithResponse(ctx context.Context, returnAddressId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressId(ctx, returnAddressId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19852,8 +19490,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2GetReturnsWarehouseCarriersByRet
 // with any type of body and a specified content type.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBodyWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnsWarehouseCarrierResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBody(ctx, returnAddressId, params, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBodyWithResponse(ctx context.Context, returnAddressId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnsWarehouseCarrierResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithBody(ctx, returnAddressId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19862,8 +19500,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWit
 
 // ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8BodyWithResponse performs a POST /v2/returns-warehouse/addresses/{returnAddressId}/carriers (the `ReturnsWarehouseV2CreateReturnsWarehouseCarrier` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, params *ReturnsWarehouseV2CreateReturnsWarehouseCarrierParams, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnsWarehouseCarrierResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8Body(ctx, returnAddressId, params, body, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, body ReturnsWarehouseV2CreateReturnsWarehouseCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2CreateReturnsWarehouseCarrierResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2CreateReturnsWarehouseCarrierWithApplicationJSONCharsetUTF8Body(ctx, returnAddressId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19873,8 +19511,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2CreateReturnsWarehouseCarrierWit
 // ReturnsWarehouseV2DeleteParcelReturnCarrierWithResponse performs a DELETE /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2DeleteParcelReturnCarrier` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2DeleteParcelReturnCarrierWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2DeleteParcelReturnCarrierParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2DeleteParcelReturnCarrierResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2DeleteParcelReturnCarrier(ctx, returnAddressId, returnAddressCarrierId, params, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2DeleteParcelReturnCarrierWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2DeleteParcelReturnCarrierResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2DeleteParcelReturnCarrier(ctx, returnAddressId, returnAddressCarrierId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19884,8 +19522,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2DeleteParcelReturnCarrierWithRes
 // ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdWithResponse performs a GET /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId` operationId) request.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdParams, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId(ctx, returnAddressId, returnAddressCarrierId, params, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierIdResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2GetReturnsWarehouseCarriersByReturnAddressIdAndReturnAddressCarrierId(ctx, returnAddressId, returnAddressCarrierId, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19896,8 +19534,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2GetReturnsWarehouseCarriersByRet
 // with any type of body and a specified content type.
 //
 // Returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2UpdateParcelReturnCarrierWithBodyWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateParcelReturnCarrierResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2UpdateParcelReturnCarrierWithBody(ctx, returnAddressId, returnAddressCarrierId, params, contentType, body, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2UpdateParcelReturnCarrierWithBodyWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateParcelReturnCarrierResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2UpdateParcelReturnCarrierWithBody(ctx, returnAddressId, returnAddressCarrierId, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
@@ -19906,8 +19544,8 @@ func (c *ClientWithResponses) ReturnsWarehouseV2UpdateParcelReturnCarrierWithBod
 
 // ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8BodyWithResponse performs a PUT /v2/returns-warehouse/addresses/{returnAddressId}/carriers/{returnAddressCarrierId} (the `ReturnsWarehouseV2UpdateParcelReturnCarrier` operationId) request.
 // Takes a body of the `application/json;charset=UTF-8` content type, and returns a wrapper object for the known response body format(s).
-func (c *ClientWithResponses) ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, params *ReturnsWarehouseV2UpdateParcelReturnCarrierParams, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateParcelReturnCarrierResponse, error) {
-	rsp, err := c.ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8Body(ctx, returnAddressId, returnAddressCarrierId, params, body, reqEditors...)
+func (c *ClientWithResponses) ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8BodyWithResponse(ctx context.Context, returnAddressId string, returnAddressCarrierId string, body ReturnsWarehouseV2UpdateParcelReturnCarrierApplicationJSONCharsetUTF8RequestBody, reqEditors ...RequestEditorFn) (*ReturnsWarehouseV2UpdateParcelReturnCarrierResponse, error) {
+	rsp, err := c.ReturnsWarehouseV2UpdateParcelReturnCarrierWithApplicationJSONCharsetUTF8Body(ctx, returnAddressId, returnAddressCarrierId, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
