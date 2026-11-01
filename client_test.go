@@ -17,7 +17,7 @@ func TestNewSetsAuthorization(t *testing.T) {
 	defer api.Close()
 
 	tokens := TokenProviderFunc(func(context.Context) (string, error) { return "abc", nil })
-	c, err := New(tokens, WithBaseURL(api.URL))
+	c, err := New(Production, tokens, WithBaseURL(api.URL))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -44,7 +44,7 @@ func TestNewTokenError(t *testing.T) {
 
 	want := errors.New("no token")
 	tokens := TokenProviderFunc(func(context.Context) (string, error) { return "", want })
-	c, _ := New(tokens, WithBaseURL(api.URL))
+	c, _ := New(Production, tokens, WithBaseURL(api.URL))
 	_, err := c.PriceReductionsV1GetAllReductionsForPartnerWithResponse(context.Background(),
 		&PriceReductionsV1GetAllReductionsForPartnerParams{})
 	if !errors.Is(err, want) {
@@ -54,7 +54,7 @@ func TestNewTokenError(t *testing.T) {
 
 func TestNewRefusesPlainHTTP(t *testing.T) {
 	tokens := TokenProviderFunc(func(context.Context) (string, error) { return "abc", nil })
-	c, _ := New(tokens, WithBaseURL("http://example.com"))
+	c, _ := New(Production, tokens, WithBaseURL("http://example.com"))
 	_, err := c.PriceReductionsV1GetAllReductionsForPartnerWithResponse(context.Background(),
 		&PriceReductionsV1GetAllReductionsForPartnerParams{})
 	if err == nil {
@@ -63,7 +63,30 @@ func TestNewRefusesPlainHTTP(t *testing.T) {
 }
 
 func TestNewNilProvider(t *testing.T) {
-	if _, err := New(nil); err == nil {
+	if _, err := New(Production, nil); err == nil {
 		t.Fatal("expected error")
+	}
+}
+
+func TestNewInvalidEnvironment(t *testing.T) {
+	tokens := TokenProviderFunc(func(context.Context) (string, error) { return "abc", nil })
+	if _, err := New(Environment(42), tokens); err == nil {
+		t.Fatal("expected error")
+	}
+}
+
+func TestNewUsesEnvironmentURL(t *testing.T) {
+	tokens := TokenProviderFunc(func(context.Context) (string, error) { return "abc", nil })
+	for env, want := range map[Environment]string{
+		Production: "https://api.otto.market/",
+		Sandbox:    "https://sandbox.api.otto.market/",
+	} {
+		c, err := New(env, tokens)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if got := c.ClientInterface.(*Client).Server; got != want {
+			t.Errorf("%s: server = %q, want %q", env, got, want)
+		}
 	}
 }

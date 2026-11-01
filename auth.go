@@ -16,9 +16,6 @@ import (
 	"time"
 )
 
-// TokenURL is the OAuth2 token endpoint of the OTTO Market API.
-const TokenURL = "https://api.otto.market/v1/token"
-
 // Scopes of the OTTO Market API, used when requesting a token.
 const (
 	ScopeProducts              = "products"
@@ -140,7 +137,8 @@ func WithTokenCache(cache TokenCache) CredentialsOption {
 	return func(c *ClientCredentials) { c.cache = cache }
 }
 
-// WithTokenURL sets the token endpoint. Default: TokenURL.
+// WithTokenURL overrides the token endpoint of the environment, e.g. for
+// a proxy or a mock server.
 func WithTokenURL(tokenURL string) CredentialsOption {
 	return func(c *ClientCredentials) { c.tokenURL = tokenURL }
 }
@@ -157,9 +155,10 @@ func WithExpiryMargin(d time.Duration) CredentialsOption {
 	return func(c *ClientCredentials) { c.margin = d }
 }
 
-// NewClientCredentials returns a TokenProvider for the given API client
-// and scopes (see the Scope* constants).
-func NewClientCredentials(clientID, clientSecret string, scopes []string, opts ...CredentialsOption) *ClientCredentials {
+// NewClientCredentials returns a TokenProvider for the given environment,
+// API client and scopes (see the Scope* constants). Use the same
+// environment as for New.
+func NewClientCredentials(env Environment, clientID, clientSecret string, scopes []string, opts ...CredentialsOption) *ClientCredentials {
 	s := slices.Clone(scopes)
 	slices.Sort(s)
 	s = slices.Compact(s)
@@ -167,7 +166,7 @@ func NewClientCredentials(clientID, clientSecret string, scopes []string, opts .
 		clientID:     clientID,
 		clientSecret: clientSecret,
 		scope:        strings.Join(s, " "),
-		tokenURL:     TokenURL,
+		tokenURL:     env.TokenURL(),
 		httpClient:   &http.Client{Timeout: 30 * time.Second},
 		cache:        NewMemoryCache(),
 		margin:       time.Minute,
@@ -236,6 +235,9 @@ func (c *ClientCredentials) fetch(ctx context.Context) (*Token, error) {
 	}
 	if c.scope != "" {
 		form.Set("scope", c.scope)
+	}
+	if c.tokenURL == "" {
+		return nil, errors.New("ottomarket: invalid environment")
 	}
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, c.tokenURL, strings.NewReader(form.Encode()))
 	if err != nil {

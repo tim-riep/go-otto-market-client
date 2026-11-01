@@ -5,11 +5,21 @@ Go-Client für die OTTO Market API.
 ## Verwendung
 
 ```go
-tokens := ottomarket.NewClientCredentials(clientID, clientSecret,
+env := ottomarket.Sandbox // oder ottomarket.Production
+
+tokens := ottomarket.NewClientCredentials(env, clientID, clientSecret,
 	[]string{ottomarket.ScopeOrders, ottomarket.ScopeProducts})
 
-client, err := ottomarket.New(tokens)
+client, err := ottomarket.New(env, tokens)
 ```
+
+| Environment | API | Token-Endpunkt |
+|---|---|---|
+| `ottomarket.Production` | `https://api.otto.market` | `https://api.otto.market/v1/token` |
+| `ottomarket.Sandbox` | `https://sandbox.api.otto.market` | `https://sandbox.api.otto.market/v1/token` |
+
+Aus einer Konfiguration lässt sich die Umgebung mit `ottomarket.ParseEnvironment("sandbox")` lesen;
+`Environment` kann auch direkt aus JSON, YAML usw. gelesen werden (`"production"` / `"sandbox"`).
 
 `New` setzt den `Authorization`-Header bei jeder Anfrage aus dem `TokenProvider`. Von außen lässt
 sich der Token nicht setzen: Die generierten Params-Structs haben kein `Authorization`-Feld, und
@@ -25,7 +35,7 @@ type TokenProvider interface {
 	Token(ctx context.Context) (string, error) // ohne "Bearer "
 }
 
-client, err := ottomarket.New(ottomarket.TokenProviderFunc(func(ctx context.Context) (string, error) {
+client, err := ottomarket.New(ottomarket.Production, ottomarket.TokenProviderFunc(func(ctx context.Context) (string, error) {
 	return myTokenStore.Current(ctx)
 }))
 ```

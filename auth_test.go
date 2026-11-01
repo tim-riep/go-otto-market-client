@@ -50,7 +50,7 @@ func newTokenServer(t *testing.T, expiresIn int) *tokenServer {
 func TestClientCredentialsCachesToken(t *testing.T) {
 	ts := newTokenServer(t, 1800)
 	cache := NewMemoryCache()
-	p := NewClientCredentials("id", "secret", []string{ScopeProducts, ScopeOrders, ScopeOrders},
+	p := NewClientCredentials(Production, "id", "secret", []string{ScopeProducts, ScopeOrders, ScopeOrders},
 		WithTokenURL(ts.URL), WithTokenCache(cache))
 
 	for range 3 {
@@ -75,7 +75,7 @@ func TestClientCredentialsCachesToken(t *testing.T) {
 func TestClientCredentialsRenewsBeforeExpiry(t *testing.T) {
 	ts := newTokenServer(t, 1800)
 	now := time.Now()
-	p := NewClientCredentials("id", "secret", nil, WithTokenURL(ts.URL), WithExpiryMargin(time.Minute))
+	p := NewClientCredentials(Production, "id", "secret", nil, WithTokenURL(ts.URL), WithExpiryMargin(time.Minute))
 	p.now = func() time.Time { return now }
 
 	if tok, _ := p.Token(context.Background()); tok != "token-1" {
@@ -93,7 +93,7 @@ func TestClientCredentialsRenewsBeforeExpiry(t *testing.T) {
 
 func TestClientCredentialsConcurrent(t *testing.T) {
 	ts := newTokenServer(t, 1800)
-	p := NewClientCredentials("id", "secret", nil, WithTokenURL(ts.URL))
+	p := NewClientCredentials(Production, "id", "secret", nil, WithTokenURL(ts.URL))
 	var wg sync.WaitGroup
 	for range 20 {
 		wg.Add(1)
@@ -112,7 +112,7 @@ func TestClientCredentialsConcurrent(t *testing.T) {
 
 func TestClientCredentialsInvalidClient(t *testing.T) {
 	ts := newTokenServer(t, 1800)
-	p := NewClientCredentials("id", "wrong", nil, WithTokenURL(ts.URL))
+	p := NewClientCredentials(Production, "id", "wrong", nil, WithTokenURL(ts.URL))
 	_, err := p.Token(context.Background())
 	var te *TokenError
 	if !errors.As(err, &te) || te.StatusCode != http.StatusUnauthorized {
@@ -127,16 +127,16 @@ func (failingCache) Set(context.Context, string, Token) error    { return errors
 
 func TestClientCredentialsCacheError(t *testing.T) {
 	ts := newTokenServer(t, 1800)
-	p := NewClientCredentials("id", "secret", nil, WithTokenURL(ts.URL), WithTokenCache(failingCache{}))
+	p := NewClientCredentials(Production, "id", "secret", nil, WithTokenURL(ts.URL), WithTokenCache(failingCache{}))
 	if _, err := p.Token(context.Background()); err == nil {
 		t.Fatal("expected error")
 	}
 }
 
 func TestCacheKey(t *testing.T) {
-	a := NewClientCredentials("id", "s1", []string{"b", "a"}).CacheKey()
-	b := NewClientCredentials("id", "s2", []string{"a", "b"}).CacheKey()
-	c := NewClientCredentials("id", "s1", []string{"a"}).CacheKey()
+	a := NewClientCredentials(Production, "id", "s1", []string{"b", "a"}).CacheKey()
+	b := NewClientCredentials(Production, "id", "s2", []string{"a", "b"}).CacheKey()
+	c := NewClientCredentials(Production, "id", "s1", []string{"a"}).CacheKey()
 	if a != b {
 		t.Error("key depends on secret or scope order")
 	}
@@ -158,5 +158,12 @@ func TestMemoryCacheExpiry(t *testing.T) {
 	c.Set(ctx, "k", Token{AccessToken: "x", ExpiresAt: time.Now().Add(time.Hour)})
 	if got, _ := c.Get(ctx, "k"); got == nil || got.AccessToken != "x" {
 		t.Fatalf("got %+v", got)
+	}
+}
+
+func TestCacheKeyDependsOnEnvironment(t *testing.T) {
+	if NewClientCredentials(Production, "id", "s", nil).CacheKey() ==
+		NewClientCredentials(Sandbox, "id", "s", nil).CacheKey() {
+		t.Error("production and sandbox share a cache key")
 	}
 }

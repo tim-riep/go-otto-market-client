@@ -8,17 +8,17 @@ import (
 	"time"
 )
 
-// Server is the base URL of the OTTO Market API.
-const Server = "https://api.otto.market"
-
-// New returns an API client that authenticates every request with a token
-// from tokens.
+// New returns an API client for the given environment that authenticates
+// every request with a token from tokens.
 //
 // The Authorization header is always set from the TokenProvider right
 // before a request is sent; a header set by a RequestEditorFn is
-// overwritten. Pass WithBaseURL to use another server and WithHTTPClient
-// to use your own HTTP client.
-func New(tokens TokenProvider, opts ...ClientOption) (*ClientWithResponses, error) {
+// // overwritten. Pass WithHTTPClient to use your own HTTP client and
+// WithBaseURL to override the URL of the environment (e.g. for a mock).
+func New(env Environment, tokens TokenProvider, opts ...ClientOption) (*ClientWithResponses, error) {
+	if !env.valid() {
+		return nil, fmt.Errorf("ottomarket: invalid environment %d", int(env))
+	}
 	if tokens == nil {
 		return nil, errors.New("ottomarket: TokenProvider is nil")
 	}
@@ -32,7 +32,7 @@ func New(tokens TokenProvider, opts ...ClientOption) (*ClientWithResponses, erro
 	}
 	// The auth option runs last so that it wraps any HTTP client set by opts.
 	all := append(append([]ClientOption{}, opts...), auth)
-	return NewClientWithResponses(Server, all...)
+	return NewClientWithResponses(env.BaseURL(), all...)
 }
 
 // authDoer sets the Authorization header on every request.
