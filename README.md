@@ -26,6 +26,27 @@ sich der Token nicht setzen: Die generierten Params-Structs haben kein `Authoriz
 ein über `RequestEditorFn` gesetzter Header wird überschrieben. Tokens werden nur über HTTPS
 gesendet.
 
+### Rate Limiting
+
+OTTO erlaubt pro Partner höchstens 20 Anfragen pro Sekunde und 1.000 pro Minute. `New` drosselt
+die Anfragen standardmäßig mit einem `MemoryRateLimiter`, der beide Grenzen exakt über ein
+gleitendes Zeitfenster einhält. Antwortet die API trotzdem mit 429, wird die Anfrage bis zu
+dreimal wiederholt (`Retry-After` wird beachtet, sonst 1 s, 2 s, 4 s).
+
+Das Limit gilt pro Partner, nicht pro Prozess. Laufen mehrere Clients oder Instanzen für denselben
+Partner, müssen sie sich einen Limiter teilen, etwa per Redis:
+
+```go
+type RateLimiter interface {
+	Wait(ctx context.Context, req *http.Request) error // blockiert, bis req gesendet werden darf
+}
+
+client, err := ottomarket.New(env, tokens,
+	ottomarket.WithRateLimiter(myRedisLimiter), // nil schaltet die Drosselung ab
+	ottomarket.WithRetries(5),
+)
+```
+
 ### Beträge
 
 Geldbeträge (`amount` neben `currency`, z. B. Preise, Steuern, Preisnachlässe) haben den Typ
