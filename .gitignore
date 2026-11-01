@@ -1,0 +1,5 @@
+# The OTTO Market OpenAPI document must never be committed.
+openapi*.json
+openapi*.yml
+openapi*.yaml
+*.tmp
