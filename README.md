@@ -2,6 +2,60 @@
 
 Go-Client für die OTTO Market API.
 
+## Verwendung
+
+```go
+env := ottomarket.Sandbox // oder ottomarket.Production
+
+tokens := ottomarket.NewClientCredentials(env, clientID, clientSecret,
+	[]string{ottomarket.ScopeOrders, ottomarket.ScopeProducts})
+
+client, err := ottomarket.New(env, tokens)
+```
+
+| Environment | API | Token-Endpunkt |
+|---|---|---|
+| `ottomarket.Production` | `https://api.otto.market` | `https://api.otto.market/v1/token` |
+| `ottomarket.Sandbox` | `https://sandbox.api.otto.market` | `https://sandbox.api.otto.market/v1/token` |
+
+Aus einer Konfiguration lässt sich die Umgebung mit `ottomarket.ParseEnvironment("sandbox")` lesen;
+`Environment` kann auch direkt aus JSON, YAML usw. gelesen werden (`"production"` / `"sandbox"`).
+
+`New` setzt den `Authorization`-Header bei jeder Anfrage aus dem `TokenProvider`. Von außen lässt
+sich der Token nicht setzen: Die generierten Params-Structs haben kein `Authorization`-Feld, und
+ein über `RequestEditorFn` gesetzter Header wird überschrieben. Tokens werden nur über HTTPS
+gesendet.
+
+### Eigener Token
+
+Verwaltet die Anwendung den Token selbst, implementiert sie `TokenProvider`:
+
+```go
+type TokenProvider interface {
+	Token(ctx context.Context) (string, error) // ohne "Bearer "
+}
+
+client, err := ottomarket.New(ottomarket.Production, ottomarket.TokenProviderFunc(func(ctx context.Context) (string, error) {
+	return myTokenStore.Current(ctx)
+}))
+```
+
+### Token-Cache
+
+`NewClientCredentials` holt Tokens per Client-Credentials-Grant und erneuert sie eine Minute vor
+Ablauf. Gespeichert werden sie in einem `TokenCache`, standardmäßig im Speicher (`MemoryCache`).
+Für Redis, PostgreSQL usw. das Interface implementieren und mit `WithTokenCache` übergeben:
+
+```go
+type TokenCache interface {
+	Get(ctx context.Context, key string) (*ottomarket.Token, error) // nil, nil wenn nicht vorhanden
+	Set(ctx context.Context, key string, token ottomarket.Token) error
+}
+```
+
+`Token` ist per JSON serialisierbar, `token.ExpiresAt` eignet sich als TTL. Der Schlüssel hängt von
+Token-URL, Client-ID und Scopes ab, nicht vom Secret. Fehler des Caches werden zurückgegeben.
+
 ## Client generieren
 
 ```bash

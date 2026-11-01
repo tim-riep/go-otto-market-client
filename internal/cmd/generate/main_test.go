@@ -22,13 +22,17 @@ const testSpec = `{
         "summary": "PROSE",
         "description": "PROSE",
         "parameters": [{"name": "id", "in": "path", "required": true,
-                        "description": "PROSE", "schema": {"type": "string"}}],
+                        "description": "PROSE", "schema": {"type": "string"}},
+                       {"name": "Authorization", "in": "header", "required": true,
+                        "schema": {"type": "string"}},
+                       {"$ref": "#/components/parameters/Auth"}],
         "responses": {"200": {"description": "PROSE",
           "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Order"}}}}}
       }
     }
   },
-  "components": {"schemas": {"Order": {"type": "object", "description": "PROSE",
+  "components": {"parameters": {"Auth": {"name": "authorization", "in": "header", "schema": {"type": "string"}}},
+    "schemas": {"Order": {"type": "object", "description": "PROSE",
     "properties": {"description": {"type": "string", "description": "PROSE", "example": "PROSE"}}}}}
 }`
 
@@ -54,6 +58,9 @@ func TestRun(t *testing.T) {
 		if !strings.Contains(string(code), want) {
 			t.Errorf("generated code lacks %q", want)
 		}
+	}
+	if strings.Contains(string(code), "Authorization") || strings.Contains(string(code), "authorization") {
+		t.Errorf("generated code exposes the Authorization header")
 	}
 	if _, err := parser.ParseFile(token.NewFileSet(), out, code, 0); err != nil {
 		t.Fatalf("generated code does not parse: %v", err)

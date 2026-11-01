@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/getkin/kin-openapi/openapi3"
@@ -99,6 +100,7 @@ func generate(spec []byte, pkg string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("load OpenAPI document: %w", err)
 	}
+	removeAuthorizationParams(doc)
 
 	code, err := codegen.Generate(doc, codegen.Configuration{
 		PackageName: pkg,
@@ -133,4 +135,41 @@ func writeFile(path string, data []byte) error {
 		return err
 	}
 	return os.Rename(tmp.Name(), path)
+}
+
+// removeAuthorizationParams drops every "Authorization" header parameter.
+// Some operations declare the header as a regular parameter, which would
+// let callers set the token by hand. Authentication is handled solely by
+// the TokenProvider of the hand-written client (see client.go), so the
+// generated code must not expose the header.
+func removeAuthorizationParams(doc *openapi3.T) {
+	isAuth := func(p *openapi3.ParameterRef) bool {
+		return p != nil && p.Value != nil &&
+			p.Value.In == openapi3.ParameterInHeader &&
+			strings.EqualFold(p.Value.Name, "Authorization")
+	}
+	filter := func(params openapi3.Parameters) openapi3.Parameters {
+		out := params[:0]
+		for _, p := range params {
+			if !isAuth(p) {
+				out = append(out, p)
+			}
+		}
+		return out
+	}
+	if doc.Paths != nil {
+		for _, item := range doc.Paths.Map() {
+			item.Parameters = filter(item.Parameters)
+			for _, op := range item.Operations() {
+				op.Parameters = filter(op.Parameters)
+			}
+		}
+	}
+	if doc.Components != nil {
+		for name, p := range doc.Components.Parameters {
+			if isAuth(p) {
+				delete(doc.Components.Parameters, name)
+			}
+		}
+	}
 }
