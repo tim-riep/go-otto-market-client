@@ -36,6 +36,7 @@ func main() {
 	var (
 		specURL = flag.String("url", defaultURL, "URL of the OpenAPI document (JSON)")
 		out     = flag.String("out", "client.gen.go", "output file for the generated client")
+		accept  = flag.String("accept-out", "accept.gen.go", "output file for the Accept header table")
 		pkg     = flag.String("package", "ottomarket", "Go package name of the generated code")
 		timeout = flag.Duration("timeout", 60*time.Second, "timeout for downloading the OpenAPI document")
 	)
@@ -44,13 +45,13 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), *timeout)
 	defer cancel()
 
-	if err := run(ctx, http.DefaultClient, *specURL, *out, *pkg); err != nil {
+	if err := run(ctx, http.DefaultClient, *specURL, *out, *accept, *pkg); err != nil {
 		fmt.Fprintln(os.Stderr, "generate:", err)
 		os.Exit(1)
 	}
 }
 
-func run(ctx context.Context, client *http.Client, specURL, out, pkg string) error {
+func run(ctx context.Context, client *http.Client, specURL, out, acceptOut, pkg string) error {
 	raw, err := fetch(ctx, client, specURL)
 	if err != nil {
 		return err
@@ -61,11 +62,14 @@ func run(ctx context.Context, client *http.Client, specURL, out, pkg string) err
 		return err
 	}
 
-	code, err := generate(stripped, pkg)
+	code, acceptCode, err := generate(stripped, pkg)
 	if err != nil {
 		return err
 	}
-	return writeFile(out, []byte(code))
+	if err := writeFile(out, []byte(code)); err != nil {
+		return err
+	}
+	return writeFile(acceptOut, acceptCode)
 }
 
 func fetch(ctx context.Context, client *http.Client, specURL string) ([]byte, error) {
@@ -92,13 +96,13 @@ func fetch(ctx context.Context, client *http.Client, specURL string) ([]byte, er
 	return body, nil
 }
 
-func generate(spec []byte, pkg string) (string, error) {
+func generate(spec []byte, pkg string) (string, []byte, error) {
 	loader := openapi3.NewLoader()
 	// External references would pull in documents that were not stripped.
 	loader.IsExternalRefsAllowed = false
 	doc, err := loader.LoadFromData(spec)
 	if err != nil {
-		return "", fmt.Errorf("load OpenAPI document: %w", err)
+		return "", nil, fmt.Errorf("load OpenAPI document: %w", err)
 	}
 	removeAuthorizationParams(doc)
 	useAmountType(doc)
@@ -118,9 +122,13 @@ func generate(spec []byte, pkg string) (string, error) {
 		AllowRemoteRefsFrom: []string{},
 	})
 	if err != nil {
-		return "", fmt.Errorf("generate client: %w", err)
+		return "", nil, fmt.Errorf("generate client: %w", err)
 	}
-	return code, nil
+	acceptCode, err := generateAccept(doc, pkg)
+	if err != nil {
+		return "", nil, fmt.Errorf("generate Accept table: %w", err)
+	}
+	return code, acceptCode, nil
 }
 
 // writeFile replaces path atomically so that a failed run never leaves a

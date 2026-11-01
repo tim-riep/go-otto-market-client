@@ -151,6 +151,7 @@ func (t *transport) prepare(req *http.Request, attempt int) (*http.Request, erro
 		}
 	}
 	r.Header.Set("Authorization", "Bearer "+tok)
+	setCommonHeaders(r, time.Now())
 	return r, nil
 }
 

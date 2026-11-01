@@ -30,6 +30,13 @@ const testSpec = `{
         "responses": {"200": {"description": "PROSE",
           "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Order"}}}}}
       }
+    },
+    "/v1/orders/{id}.pdf": {
+      "get": {
+        "operationId": "getOrderPdf",
+        "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "string"}}],
+        "responses": {"200": {"description": "PROSE", "content": {"application/pdf": {"schema": {"type": "string", "format": "binary"}}}}}
+      }
     }
   },
   "components": {"parameters": {"Auth": {"name": "authorization", "in": "header", "schema": {"type": "string"}}},
@@ -48,7 +55,7 @@ func TestRun(t *testing.T) {
 	defer srv.Close()
 
 	out := filepath.Join(t.TempDir(), "client.gen.go")
-	if err := run(context.Background(), srv.Client(), srv.URL, out, "ottomarket"); err != nil {
+	if err := run(context.Background(), srv.Client(), srv.URL, out, filepath.Join(filepath.Dir(out), "accept.gen.go"), "ottomarket"); err != nil {
 		t.Fatal(err)
 	}
 	code, err := os.ReadFile(out)
@@ -71,9 +78,20 @@ func TestRun(t *testing.T) {
 		t.Fatalf("generated code does not parse: %v", err)
 	}
 
-	// Nothing but the generated client may be written.
+	accept, err := os.ReadFile(filepath.Join(filepath.Dir(out), "accept.gen.go"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, want := range []string{`"GET", regexp.MustCompile("^/v1/orders/[^/]+$"), "application/json"`,
+		`"GET", regexp.MustCompile("^/v1/orders/[^/]+\\.pdf$"), "application/pdf, application/json;q=0.5"`} {
+		if !strings.Contains(string(accept), want) {
+			t.Errorf("accept table lacks %s:\n%s", want, accept)
+		}
+	}
+
+	// Nothing but the generated files may be written.
 	entries, _ := os.ReadDir(filepath.Dir(out))
-	if len(entries) != 1 {
+	if len(entries) != 2 {
 		t.Errorf("unexpected files in output dir: %v", entries)
 	}
 }
@@ -82,7 +100,7 @@ func TestRunHTTPError(t *testing.T) {
 	srv := httptest.NewServer(http.NotFoundHandler())
 	defer srv.Close()
 	out := filepath.Join(t.TempDir(), "client.gen.go")
-	if err := run(context.Background(), srv.Client(), srv.URL, out, "ottomarket"); err == nil {
+	if err := run(context.Background(), srv.Client(), srv.URL, out, filepath.Join(filepath.Dir(out), "accept.gen.go"), "ottomarket"); err == nil {
 		t.Fatal("expected error")
 	}
 	if _, err := os.Stat(out); !os.IsNotExist(err) {

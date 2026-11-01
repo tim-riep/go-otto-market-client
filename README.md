@@ -26,6 +26,17 @@ sich der Token nicht setzen: Die generierten Params-Structs haben kein `Authoriz
 ein über `RequestEditorFn` gesetzter Header wird überschrieben. Tokens werden nur über HTTPS
 gesendet.
 
+### Header
+
+Bei jeder Anfrage setzt der Client:
+
+- `X-Request-Timestamp`: Sendezeitpunkt nach ISO 8601 in UTC, z. B. `2026-11-01T22:08:15.123Z`
+  (bei Wiederholungen neu).
+- `Accept`: die Medientypen, die der Endpunkt laut Spezifikation liefert, z. B.
+  `application/pdf, application/json;q=0.5` für Belege als PDF. Ein selbst gesetzter
+  `Accept`-Header bleibt erhalten. Die Zuordnung erzeugt der Generator in `accept.gen.go`.
+- `Content-Type`: nur bei Anfragen mit Body, gesetzt vom generierten Code.
+
 ### Rate Limiting
 
 OTTO erlaubt pro Partner höchstens 20 Anfragen pro Sekunde und 1.000 pro Minute. `New` drosselt
@@ -101,7 +112,8 @@ go generate ./...
 
 Der Generator (`internal/cmd/generate`) lädt die OpenAPI-Spezifikation live von
 <https://api.otto.market/docs/openapi.json>, entfernt alle Texte und erzeugt daraus
-mit [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen) die Datei `client.gen.go`.
+mit [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen) die Datei `client.gen.go` sowie die
+`Accept`-Tabelle `accept.gen.go`.
 
 Entfernt werden unter anderem `description`, `summary`, `title`, `example`, `examples`,
 `externalDocs`, `contact`, `license`, `termsOfService`, `$comment`, Beschreibungen von
