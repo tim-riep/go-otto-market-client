@@ -8,6 +8,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"testing"
 )
@@ -33,7 +34,10 @@ const testSpec = `{
   },
   "components": {"parameters": {"Auth": {"name": "authorization", "in": "header", "schema": {"type": "string"}}},
     "schemas": {"Order": {"type": "object", "description": "PROSE",
-    "properties": {"description": {"type": "string", "description": "PROSE", "example": "PROSE"}}}}}
+    "properties": {"description": {"type": "string", "description": "PROSE", "example": "PROSE"},
+                   "total": {"type": "object", "properties": {"amount": {"type": "number"}, "currency": {"type": "string"}}},
+                   "weight": {"type": "object", "properties": {"amount": {"type": "number"}, "unit": {"type": "string"}}},
+                   "rate": {"type": "number"}}}}}
 }`
 
 func TestRun(t *testing.T) {
@@ -54,9 +58,10 @@ func TestRun(t *testing.T) {
 	if strings.Contains(string(code), "PROSE") {
 		t.Fatalf("prose in generated code")
 	}
-	for _, want := range []string{"func (c *Client) GetOrder(", "type Order struct", "Description *string"} {
-		if !strings.Contains(string(code), want) {
-			t.Errorf("generated code lacks %q", want)
+	for _, want := range []string{`func \(c \*Client\) GetOrder\(`, `type Order struct`, `Description\s+\*string`,
+		`Amount\s+\*Amount\s`, `Amount\s+\*float64\s`, `Rate\s+\*float64\s`} {
+		if !regexp.MustCompile(want).Match(code) {
+			t.Errorf("generated code lacks %s", want)
 		}
 	}
 	if strings.Contains(string(code), "Authorization") || strings.Contains(string(code), "authorization") {

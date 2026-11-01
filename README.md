@@ -26,6 +26,22 @@ sich der Token nicht setzen: Die generierten Params-Structs haben kein `Authoriz
 ein über `RequestEditorFn` gesetzter Header wird überschrieben. Tokens werden nur über HTTPS
 gesendet.
 
+### Beträge
+
+Geldbeträge (`amount` neben `currency`, z. B. Preise, Steuern, Preisnachlässe) haben den Typ
+`ottomarket.Amount`. Da die API derzeit nur EUR erlaubt, haben Beträge höchstens zwei
+Nachkommastellen und werden exakt in Cent gespeichert statt als Gleitkommazahl:
+
+```go
+a, _ := ottomarket.ParseAmount("19.99") // Amount(1999)
+a.Cents()                               // 1999
+a.String()                              // "19.99"
+ottomarket.AmountFromCents(50)          // 0.50
+```
+
+Im JSON bleibt ein Betrag eine Zahl (`19.99`). Ein Wert mit mehr als zwei Nachkommastellen
+führt beim Dekodieren zu einem Fehler. Alle übrigen Zahlen (Steuersätze, Kennzahlen) sind `float64`.
+
 ### Eigener Token
 
 Verwaltet die Anwendung den Token selbst, implementiert sie `TokenProvider`:
