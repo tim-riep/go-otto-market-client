@@ -37,6 +37,7 @@ func main() {
 		specURL = flag.String("url", defaultURL, "URL of the OpenAPI document (JSON)")
 		out     = flag.String("out", "client.gen.go", "output file for the generated client")
 		accept  = flag.String("accept-out", "accept.gen.go", "output file for the Accept header table")
+		pagesF  = flag.String("pages-out", "pages.gen.go", "output file for the pagination methods")
 		pkg     = flag.String("package", "ottomarket", "Go package name of the generated code")
 		timeout = flag.Duration("timeout", 60*time.Second, "timeout for downloading the OpenAPI document")
 	)
@@ -45,13 +46,18 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), *timeout)
 	defer cancel()
 
-	if err := run(ctx, http.DefaultClient, *specURL, *out, *accept, *pkg); err != nil {
+	if err := run(ctx, http.DefaultClient, *specURL, outputs{client: *out, accept: *accept, pages: *pagesF}, *pkg); err != nil {
 		fmt.Fprintln(os.Stderr, "generate:", err)
 		os.Exit(1)
 	}
 }
 
-func run(ctx context.Context, client *http.Client, specURL, out, acceptOut, pkg string) error {
+// outputs are the files written by the generator.
+type outputs struct {
+	client, accept, pages string
+}
+
+func run(ctx context.Context, client *http.Client, specURL string, out outputs, pkg string) error {
 	raw, err := fetch(ctx, client, specURL)
 	if err != nil {
 		return err
@@ -62,14 +68,23 @@ func run(ctx context.Context, client *http.Client, specURL, out, acceptOut, pkg 
 		return err
 	}
 
-	code, acceptCode, err := generate(stripped, pkg)
+	files, err := generate(stripped, pkg)
 	if err != nil {
 		return err
 	}
-	if err := writeFile(out, []byte(code)); err != nil {
-		return err
+	for _, f := range []struct {
+		path string
+		data []byte
+	}{{out.client, files.client}, {out.accept, files.accept}, {out.pages, files.pages}} {
+		if err := writeFile(f.path, f.data); err != nil {
+			return err
+		}
 	}
-	return writeFile(acceptOut, acceptCode)
+	return nil
+}
+
+type generated struct {
+	client, accept, pages []byte
 }
 
 func fetch(ctx context.Context, client *http.Client, specURL string) ([]byte, error) {
@@ -96,13 +111,13 @@ func fetch(ctx context.Context, client *http.Client, specURL string) ([]byte, er
 	return body, nil
 }
 
-func generate(spec []byte, pkg string) (string, []byte, error) {
+func generate(spec []byte, pkg string) (*generated, error) {
 	loader := openapi3.NewLoader()
 	// External references would pull in documents that were not stripped.
 	loader.IsExternalRefsAllowed = false
 	doc, err := loader.LoadFromData(spec)
 	if err != nil {
-		return "", nil, fmt.Errorf("load OpenAPI document: %w", err)
+		return nil, fmt.Errorf("load OpenAPI document: %w", err)
 	}
 	removeAuthorizationParams(doc)
 	useAmountType(doc)
@@ -122,13 +137,18 @@ func generate(spec []byte, pkg string) (string, []byte, error) {
 		AllowRemoteRefsFrom: []string{},
 	})
 	if err != nil {
-		return "", nil, fmt.Errorf("generate client: %w", err)
+		return nil, fmt.Errorf("generate client: %w", err)
 	}
 	acceptCode, err := generateAccept(doc, pkg)
 	if err != nil {
-		return "", nil, fmt.Errorf("generate Accept table: %w", err)
+		return nil, fmt.Errorf("generate Accept table: %w", err)
 	}
-	return code, acceptCode, nil
+	// Must run after codegen.Generate, which sets up the naming options.
+	pagesCode, err := generatePages(doc, pkg)
+	if err != nil {
+		return nil, fmt.Errorf("generate pagination: %w", err)
+	}
+	return &generated{client: []byte(code), accept: acceptCode, pages: pagesCode}, nil
 }
 
 // writeFile replaces path atomically so that a failed run never leaves a

@@ -26,6 +26,32 @@ sich der Token nicht setzen: Die generierten Params-Structs haben kein `Authoriz
 ein über `RequestEditorFn` gesetzter Header wird überschrieben. Tokens werden nur über HTTPS
 gesendet.
 
+### Listen und Pagination
+
+Für jeden Listen-Endpunkt gibt es neben der normalen Methode eine `...Pages`-Methode, die alle
+Seiten liefert. Sie ruft die erste Seite mit den übergebenen Parametern ab und folgt dann dem
+`next`-Link jeder Seite, bis keiner mehr kommt:
+
+```go
+limit := "100"
+for page, err := range client.OrdersV4FindPartnerOrdersPages(ctx, &ottomarket.OrdersV4FindPartnerOrdersParams{Limit: &limit}) {
+	if err != nil {
+		return err // z. B. *ottomarket.PageError bei Status != 2xx
+	}
+	for _, order := range *page.JSON200.Resources {
+		// ...
+	}
+}
+```
+
+- `limit` legt die Seitengröße fest; die API kann weniger liefern.
+- Unterstützt werden alle drei Link-Formen der API: `links: [{rel: "next", href}]`,
+  `links: {rel, href}` und `_links: {next: {href}}`.
+- Ein `break` beendet das Blättern ohne weitere Anfragen. Links auf fremde Hosts und Endlosschleifen
+  führen zu einem Fehler.
+- Ausnahme: `GET /v2/returns-warehouse/addresses` liefert eine reine Liste ohne Links; dort
+  `page` selbst hochzählen.
+
 ### Header
 
 Bei jeder Anfrage setzt der Client:
@@ -113,7 +139,7 @@ go generate ./...
 Der Generator (`internal/cmd/generate`) lädt die OpenAPI-Spezifikation live von
 <https://api.otto.market/docs/openapi.json>, entfernt alle Texte und erzeugt daraus
 mit [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen) die Datei `client.gen.go` sowie die
-`Accept`-Tabelle `accept.gen.go`.
+`Accept`-Tabelle `accept.gen.go` und die Pagination-Methoden `pages.gen.go`.
 
 Entfernt werden unter anderem `description`, `summary`, `title`, `example`, `examples`,
 `externalDocs`, `contact`, `license`, `termsOfService`, `$comment`, Beschreibungen von

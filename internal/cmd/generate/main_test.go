@@ -31,6 +31,16 @@ const testSpec = `{
           "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Order"}}}}}
       }
     },
+    "/v1/orders": {
+      "get": {
+        "operationId": "listOrders",
+        "parameters": [{"name": "limit", "in": "query", "schema": {"type": "integer"}}],
+        "responses": {"200": {"description": "PROSE", "content": {"application/json": {"schema": {
+          "type": "object", "properties": {
+            "resources": {"type": "array", "items": {"$ref": "#/components/schemas/Order"}},
+            "links": {"type": "array", "items": {"type": "object", "properties": {"rel": {"type": "string"}, "href": {"type": "string"}}}}}}}}}}
+      }
+    },
     "/v1/orders/{id}.pdf": {
       "get": {
         "operationId": "getOrderPdf",
@@ -55,7 +65,7 @@ func TestRun(t *testing.T) {
 	defer srv.Close()
 
 	out := filepath.Join(t.TempDir(), "client.gen.go")
-	if err := run(context.Background(), srv.Client(), srv.URL, out, filepath.Join(filepath.Dir(out), "accept.gen.go"), "ottomarket"); err != nil {
+	if err := run(context.Background(), srv.Client(), srv.URL, testOutputs(out), "ottomarket"); err != nil {
 		t.Fatal(err)
 	}
 	code, err := os.ReadFile(out)
@@ -89,9 +99,20 @@ func TestRun(t *testing.T) {
 		}
 	}
 
+	pages, err := os.ReadFile(filepath.Join(filepath.Dir(out), "pages.gen.go"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(pages), "func (c *ClientWithResponses) ListOrdersPages(ctx context.Context, params *ListOrdersParams,") {
+		t.Errorf("pages.gen.go lacks ListOrdersPages:\n%s", pages)
+	}
+	if strings.Contains(string(pages), "GetOrderPages") {
+		t.Errorf("single resource operation got a Pages method")
+	}
+
 	// Nothing but the generated files may be written.
 	entries, _ := os.ReadDir(filepath.Dir(out))
-	if len(entries) != 2 {
+	if len(entries) != 3 {
 		t.Errorf("unexpected files in output dir: %v", entries)
 	}
 }
@@ -100,10 +121,15 @@ func TestRunHTTPError(t *testing.T) {
 	srv := httptest.NewServer(http.NotFoundHandler())
 	defer srv.Close()
 	out := filepath.Join(t.TempDir(), "client.gen.go")
-	if err := run(context.Background(), srv.Client(), srv.URL, out, filepath.Join(filepath.Dir(out), "accept.gen.go"), "ottomarket"); err == nil {
+	if err := run(context.Background(), srv.Client(), srv.URL, testOutputs(out), "ottomarket"); err == nil {
 		t.Fatal("expected error")
 	}
 	if _, err := os.Stat(out); !os.IsNotExist(err) {
 		t.Fatal("output written despite error")
 	}
+}
+
+func testOutputs(client string) outputs {
+	dir := filepath.Dir(client)
+	return outputs{client: client, accept: filepath.Join(dir, "accept.gen.go"), pages: filepath.Join(dir, "pages.gen.go")}
 }
