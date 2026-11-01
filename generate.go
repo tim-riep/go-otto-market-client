@@ -8,4 +8,4 @@
 //	go generate ./...
 package ottomarket
 
-//go:generate go run ./internal/cmd/generate -out client.gen.go -package ottomarket
+//go:generate go run ./internal/cmd/generate -out client.gen.go -accept-out accept.gen.go -pages-out pages.gen.go -package ottomarket

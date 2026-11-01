@@ -3193,7 +3193,7 @@ type APIErrorResponseForBadRequestAvailabilityV1 struct {
 
 // APIErrorResponseForBadRequestShippingProfilesV1 defines model for APIErrorResponseForBadRequest__ShippingProfiles-V1.
 type APIErrorResponseForBadRequestShippingProfilesV1 struct {
-	Status           float32                                            `json:"status"`
+	Status           float64                                            `json:"status"`
 	Title            string                                             `json:"title"`
 	Type             string                                             `json:"type"`
 	ValidationErrors []ErrorWithBadRequestSuggestionsShippingProfilesV1 `json:"validationErrors"`
@@ -3201,7 +3201,7 @@ type APIErrorResponseForBadRequestShippingProfilesV1 struct {
 
 // APIErrorResponseForConflictShippingProfilesV1 defines model for APIErrorResponseForConflict__ShippingProfiles-V1.
 type APIErrorResponseForConflictShippingProfilesV1 struct {
-	Status           float32                                             `json:"status"`
+	Status           float64                                             `json:"status"`
 	Title            string                                              `json:"title"`
 	Type             string                                              `json:"type"`
 	ValidationErrors []ErrorWithSuggestionsForConflictShippingProfilesV1 `json:"validationErrors"`
@@ -3209,7 +3209,7 @@ type APIErrorResponseForConflictShippingProfilesV1 struct {
 
 // APIErrorResponseForInternalServerAvailabilityV1 defines model for APIErrorResponseForInternalServer__Availability-V1.
 type APIErrorResponseForInternalServerAvailabilityV1 struct {
-	Code   float32 `json:"code"`
+	Code   float64 `json:"code"`
 	Detail string  `json:"detail"`
 	Logref string  `json:"logref"`
 	Path   string  `json:"path"`
@@ -3218,7 +3218,7 @@ type APIErrorResponseForInternalServerAvailabilityV1 struct {
 
 // APIErrorResponseForNotFoundAvailabilityV1 defines model for APIErrorResponseForNotFound__Availability-V1.
 type APIErrorResponseForNotFoundAvailabilityV1 struct {
-	Code   float32 `json:"code"`
+	Code   float64 `json:"code"`
 	Detail string  `json:"detail"`
 	Logref string  `json:"logref"`
 	Path   string  `json:"path"`
@@ -3227,7 +3227,7 @@ type APIErrorResponseForNotFoundAvailabilityV1 struct {
 
 // APIErrorResponseForNotFoundShippingProfilesV1 defines model for APIErrorResponseForNotFound__ShippingProfiles-V1.
 type APIErrorResponseForNotFoundShippingProfilesV1 struct {
-	Status           float32                                          `json:"status"`
+	Status           float64                                          `json:"status"`
 	Title            string                                           `json:"title"`
 	Type             string                                           `json:"type"`
 	ValidationErrors []ErrorWithNotFoundSuggestionsShippingProfilesV1 `json:"validationErrors"`
@@ -3235,7 +3235,7 @@ type APIErrorResponseForNotFoundShippingProfilesV1 struct {
 
 // APIErrorResponseForPreconditionShippingProfilesV1 defines model for APIErrorResponseForPrecondition__ShippingProfiles-V1.
 type APIErrorResponseForPreconditionShippingProfilesV1 struct {
-	Status           float32                                   `json:"status"`
+	Status           float64                                   `json:"status"`
 	Title            string                                    `json:"title"`
 	Type             string                                    `json:"type"`
 	ValidationErrors []ErrorWithPreconditionShippingProfilesV1 `json:"validationErrors"`
@@ -3257,7 +3257,7 @@ type APIErrorResponseSponsoredProductAdsV1 struct {
 
 // APIInternalServerErrorResponseShippingProfilesV1 defines model for APIInternalServerErrorResponse__ShippingProfiles-V1.
 type APIInternalServerErrorResponseShippingProfilesV1 struct {
-	Status           float32                                         `json:"status"`
+	Status           float64                                         `json:"status"`
 	Title            string                                          `json:"title"`
 	Type             string                                          `json:"type"`
 	ValidationErrors []ErrorForInternalServerErrorShippingProfilesV1 `json:"validationErrors"`
@@ -3389,8 +3389,8 @@ type AddressShipmentsV1 struct {
 
 // AmountOrdersV4 defines model for Amount__Orders-V4.
 type AmountOrdersV4 struct {
-	Amount   float32 `json:"amount"`
-	Currency string  `json:"currency"`
+	Amount   Amount `json:"amount"`
+	Currency string `json:"currency"`
 }
 
 // AnnouncedStatusDataReturnsV3 defines model for AnnouncedStatusData__Returns-V3.
@@ -3591,13 +3591,13 @@ type CampaignListItemDTOSponsoredProductAdsV1Status string
 
 // CampaignMetricsSponsoredProductAdsReportingV1 defines model for CampaignMetrics__SponsoredProductAdsReporting-V1.
 type CampaignMetricsSponsoredProductAdsReportingV1 struct {
-	ClickThroughRate float32 `json:"clickThroughRate"`
-	CostPerClick     float32 `json:"costPerClick"`
-	ReturnOnAdSpend  float32 `json:"returnOnAdSpend"`
+	ClickThroughRate float64 `json:"clickThroughRate"`
+	CostPerClick     float64 `json:"costPerClick"`
+	ReturnOnAdSpend  float64 `json:"returnOnAdSpend"`
 	TotalClicks      int     `json:"totalClicks"`
-	TotalCosts       float32 `json:"totalCosts"`
+	TotalCosts       float64 `json:"totalCosts"`
 	TotalOrderedSkus int     `json:"totalOrderedSkus"`
-	TotalSales       float32 `json:"totalSales"`
+	TotalSales       float64 `json:"totalSales"`
 	TotalViews       int     `json:"totalViews"`
 }
 
@@ -4022,7 +4022,7 @@ type ForbiddenGetShipmentByTrackingNumberShipmentsV1 struct {
 // GLSReturnCarrierCodesReturnsWarehouseV2 defines model for GLSReturnCarrierCodes__ReturnsWarehouse-V2.
 type GLSReturnCarrierCodesReturnsWarehouseV2 struct {
 	ContactId  string  `json:"contactId"`
-	CustomerId float32 `json:"customerId"`
+	CustomerId float64 `json:"customerId"`
 	ReferenzId *string `json:"referenzId,omitempty"`
 }
 
@@ -4066,7 +4066,7 @@ type InitialDeliveryFeeOrdersV4 struct {
 	DeliveryFeeAmount AmountOrdersV4 `json:"deliveryFeeAmount"`
 	Name              string         `json:"name"`
 	PositionItemIds   []string       `json:"positionItemIds"`
-	VatRate           float32        `json:"vatRate"`
+	VatRate           float64        `json:"vatRate"`
 }
 
 // InitialDiscountOrdersV4 defines model for InitialDiscount__Orders-V4.
@@ -4076,7 +4076,7 @@ type InitialDiscountOrdersV4 struct {
 	DiscountName    string         `json:"discountName"`
 	Name            string         `json:"name"`
 	PositionItemIds []string       `json:"positionItemIds"`
-	VatRate         float32        `json:"vatRate"`
+	VatRate         float64        `json:"vatRate"`
 }
 
 // InternalServerErrorAddPositionItemByShipmentIdShipmentsV1 defines model for InternalServerErrorAddPositionItemByShipmentId__Shipments-V1.
@@ -4420,8 +4420,8 @@ type MisdirectedStatusDataReturnsV3 struct {
 
 // MonetaryAmountProductsV5 defines model for MonetaryAmount__Products-V5.
 type MonetaryAmountProductsV5 struct {
-	Amount   *float32 `json:"amount,omitempty"`
-	Currency *string  `json:"currency,omitempty"`
+	Amount   *Amount `json:"amount,omitempty"`
+	Currency *string `json:"currency,omitempty"`
 }
 
 // MonetaryAmountSponsoredProductAdsV1 defines model for MonetaryAmount__SponsoredProductAds-V1.
@@ -4471,7 +4471,7 @@ type MultiparcelTrackingKeyShipmentsV1Carrier string
 type NormPriceInfoProductsV5 struct {
 	NormAmount  *NormPriceInfoProductsV5NormAmount `json:"normAmount,omitempty"`
 	NormUnit    *NormPriceInfoProductsV5NormUnit   `json:"normUnit,omitempty"`
-	SalesAmount *float32                           `json:"salesAmount,omitempty"`
+	SalesAmount *float64                           `json:"salesAmount,omitempty"`
 	SalesUnit   *NormPriceInfoProductsV5SalesUnit  `json:"salesUnit,omitempty"`
 }
 
@@ -4612,8 +4612,8 @@ type PartnerOrderOrdersV4 struct {
 type PartnerPriceReductionRequestPriceReductionsV1 struct {
 	PositionItemId openapi_types.UUID `json:"positionItemId"`
 	PriceReduction struct {
-		Amount   *float32 `json:"amount,omitempty"`
-		Currency *string  `json:"currency,omitempty"`
+		Amount   *Amount `json:"amount,omitempty"`
+		Currency *string `json:"currency,omitempty"`
 	} `json:"priceReduction"`
 	SalesOrderId openapi_types.UUID `json:"salesOrderId"`
 }
@@ -4757,8 +4757,8 @@ type PriceModificationReceiptsV3PriceModificationType string
 type PriceReductionDetailPriceReductionsV1 struct {
 	CreationDateTime *string `json:"creationDateTime,omitempty"`
 	PriceReduction   *struct {
-		Amount   *float32 `json:"amount,omitempty"`
-		Currency *string  `json:"currency,omitempty"`
+		Amount   *Amount `json:"amount,omitempty"`
+		Currency *string `json:"currency,omitempty"`
 	} `json:"priceReduction,omitempty"`
 	ReceiptNumber *string     `json:"receiptNumber,omitempty"`
 	Status        interface{} `json:"status,omitempty"`
@@ -4767,15 +4767,15 @@ type PriceReductionDetailPriceReductionsV1 struct {
 // PriceReductionResponsePriceReductionsV1 defines model for PriceReductionResponse__Price-Reductions-V1.
 type PriceReductionResponsePriceReductionsV1 struct {
 	InvoicePrice *struct {
-		Amount   *float32 `json:"amount,omitempty"`
-		Currency *string  `json:"currency,omitempty"`
+		Amount   *Amount `json:"amount,omitempty"`
+		Currency *string `json:"currency,omitempty"`
 	} `json:"invoicePrice,omitempty"`
 	PositionItemId      *openapi_types.UUID                      `json:"positionItemId,omitempty"`
 	PriceReductions     *[]PriceReductionDetailPriceReductionsV1 `json:"priceReductions,omitempty"`
 	SalesOrderId        *openapi_types.UUID                      `json:"salesOrderId,omitempty"`
 	TotalPriceReduction *struct {
-		Amount   *float32 `json:"amount,omitempty"`
-		Currency *string  `json:"currency,omitempty"`
+		Amount   *Amount `json:"amount,omitempty"`
+		Currency *string `json:"currency,omitempty"`
 	} `json:"totalPriceReduction,omitempty"`
 }
 
@@ -4794,16 +4794,16 @@ type PriceToPayPerPositionItemReceiptsV3 struct {
 // PriceReceiptsV3 defines model for Price__Receipts-V3.
 type PriceReceiptsV3 struct {
 	Gross struct {
-		Amount   float32 `json:"amount"`
-		Currency string  `json:"currency"`
+		Amount   Amount `json:"amount"`
+		Currency string `json:"currency"`
 	} `json:"gross"`
 	Net *struct {
-		Amount   float32 `json:"amount"`
-		Currency string  `json:"currency"`
+		Amount   Amount `json:"amount"`
+		Currency string `json:"currency"`
 	} `json:"net,omitempty"`
 	Tax *struct {
-		Amount   float32 `json:"amount"`
-		Currency string  `json:"currency"`
+		Amount   Amount `json:"amount"`
+		Currency string `json:"currency"`
 	} `json:"tax,omitempty"`
 	TaxRate string                 `json:"taxRate"`
 	TaxType PriceReceiptsV3TaxType `json:"taxType"`
@@ -4873,14 +4873,14 @@ type ProductDescriptionProductsV5 struct {
 
 // ProductMetricsSponsoredProductAdsReportingV1 defines model for ProductMetrics__SponsoredProductAdsReporting-V1.
 type ProductMetricsSponsoredProductAdsReportingV1 struct {
-	ClickThroughRate float32 `json:"clickThroughRate"`
-	CostPerClick     float32 `json:"costPerClick"`
-	ReturnOnAdSpend  float32 `json:"returnOnAdSpend"`
+	ClickThroughRate float64 `json:"clickThroughRate"`
+	CostPerClick     float64 `json:"costPerClick"`
+	ReturnOnAdSpend  float64 `json:"returnOnAdSpend"`
 	TotalClicks      int     `json:"totalClicks"`
-	TotalCosts       float32 `json:"totalCosts"`
+	TotalCosts       float64 `json:"totalCosts"`
 	TotalOrderedSkus int     `json:"totalOrderedSkus"`
-	TotalSales       float32 `json:"totalSales"`
-	TotalSalesSeller float32 `json:"totalSalesSeller"`
+	TotalSales       float64 `json:"totalSales"`
+	TotalSalesSeller float64 `json:"totalSalesSeller"`
 	TotalViews       int     `json:"totalViews"`
 }
 
@@ -5002,7 +5002,7 @@ type ProductOrdersV4 struct {
 	ProductTitle  string               `json:"productTitle"`
 	ShopUrl       *string              `json:"shopUrl,omitempty"`
 	Sku           string               `json:"sku"`
-	VatRate       float32              `json:"vatRate"`
+	VatRate       float64              `json:"vatRate"`
 }
 
 // QuantityApiErrorAvailabilityV1 defines model for QuantityApiError__Availability-V1.
@@ -5017,8 +5017,8 @@ type QuantityApiErrorAvailabilityV1 struct {
 // ReceiptReceiptsV3 defines model for Receipt__Receipts-V3.
 type ReceiptReceiptsV3 struct {
 	AmountDue struct {
-		Amount   float32 `json:"amount"`
-		Currency string  `json:"currency"`
+		Amount   Amount `json:"amount"`
+		Currency string `json:"currency"`
 	} `json:"amountDue"`
 	CreationDate          time.Time                           `json:"creationDate"`
 	Customer              CustomerReceiptsV3                  `json:"customer"`
@@ -5042,8 +5042,8 @@ type ReceiptReceiptsV3 struct {
 	ShipmentDate          *time.Time                          `json:"shipmentDate,omitempty"`
 	Totals                []PriceReceiptsV3                   `json:"totals"`
 	TotalsGrossAmount     *struct {
-		Amount   float32 `json:"amount"`
-		Currency string  `json:"currency"`
+		Amount   Amount `json:"amount"`
+		Currency string `json:"currency"`
 	} `json:"totalsGrossAmount,omitempty"`
 	TotalsReductions *[]TotalsReductionReceiptsV3 `json:"totalsReductions,omitempty"`
 }
@@ -5416,8 +5416,8 @@ type TotalsReductionDetailsReceiptsV3 struct {
 type TotalsReductionReceiptsV3 struct {
 	Details *TotalsReductionDetailsReceiptsV3 `json:"details,omitempty"`
 	Gross   struct {
-		Amount   float32 `json:"amount"`
-		Currency string  `json:"currency"`
+		Amount   Amount `json:"amount"`
+		Currency string `json:"currency"`
 	} `json:"gross"`
 	Type TotalsReductionReceiptsV3Type `json:"type"`
 }

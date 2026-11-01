@@ -26,6 +26,80 @@ sich der Token nicht setzen: Die generierten Params-Structs haben kein `Authoriz
 ein über `RequestEditorFn` gesetzter Header wird überschrieben. Tokens werden nur über HTTPS
 gesendet.
 
+### Listen und Pagination
+
+Für jeden Listen-Endpunkt gibt es neben der normalen Methode eine `...Pages`-Methode, die alle
+Seiten liefert. Sie ruft die erste Seite mit den übergebenen Parametern ab und folgt dann dem
+`next`-Link jeder Seite, bis keiner mehr kommt:
+
+```go
+limit := "100"
+for page, err := range client.OrdersV4FindPartnerOrdersPages(ctx, &ottomarket.OrdersV4FindPartnerOrdersParams{Limit: &limit}) {
+	if err != nil {
+		return err // z. B. *ottomarket.PageError bei Status != 2xx
+	}
+	for _, order := range *page.JSON200.Resources {
+		// ...
+	}
+}
+```
+
+- `limit` legt die Seitengröße fest; die API kann weniger liefern.
+- Unterstützt werden alle drei Link-Formen der API: `links: [{rel: "next", href}]`,
+  `links: {rel, href}` und `_links: {next: {href}}`.
+- Ein `break` beendet das Blättern ohne weitere Anfragen. Links auf fremde Hosts und Endlosschleifen
+  führen zu einem Fehler.
+- Ausnahme: `GET /v2/returns-warehouse/addresses` liefert eine reine Liste ohne Links; dort
+  `page` selbst hochzählen.
+
+### Header
+
+Bei jeder Anfrage setzt der Client:
+
+- `X-Request-Timestamp`: Sendezeitpunkt nach ISO 8601 in UTC, z. B. `2026-11-01T22:08:15.123Z`
+  (bei Wiederholungen neu).
+- `Accept`: die Medientypen, die der Endpunkt laut Spezifikation liefert, z. B.
+  `application/pdf, application/json;q=0.5` für Belege als PDF. Ein selbst gesetzter
+  `Accept`-Header bleibt erhalten. Die Zuordnung erzeugt der Generator in `accept.gen.go`.
+- `Content-Type`: nur bei Anfragen mit Body, gesetzt vom generierten Code.
+
+### Rate Limiting
+
+OTTO erlaubt pro Partner höchstens 20 Anfragen pro Sekunde und 1.000 pro Minute. `New` drosselt
+die Anfragen standardmäßig mit einem `MemoryRateLimiter`, der beide Grenzen exakt über ein
+gleitendes Zeitfenster einhält. Antwortet die API trotzdem mit 429, wird die Anfrage bis zu
+dreimal wiederholt (`Retry-After` wird beachtet, sonst 1 s, 2 s, 4 s).
+
+Das Limit gilt pro Partner, nicht pro Prozess. Laufen mehrere Clients oder Instanzen für denselben
+Partner, müssen sie sich einen Limiter teilen, etwa per Redis:
+
+```go
+type RateLimiter interface {
+	Wait(ctx context.Context, req *http.Request) error // blockiert, bis req gesendet werden darf
+}
+
+client, err := ottomarket.New(env, tokens,
+	ottomarket.WithRateLimiter(myRedisLimiter), // nil schaltet die Drosselung ab
+	ottomarket.WithRetries(5),
+)
+```
+
+### Beträge
+
+Geldbeträge (`amount` neben `currency`, z. B. Preise, Steuern, Preisnachlässe) haben den Typ
+`ottomarket.Amount`. Da die API derzeit nur EUR erlaubt, haben Beträge höchstens zwei
+Nachkommastellen und werden exakt in Cent gespeichert statt als Gleitkommazahl:
+
+```go
+a, _ := ottomarket.ParseAmount("19.99") // Amount(1999)
+a.Cents()                               // 1999
+a.String()                              // "19.99"
+ottomarket.AmountFromCents(50)          // 0.50
+```
+
+Im JSON bleibt ein Betrag eine Zahl (`19.99`). Ein Wert mit mehr als zwei Nachkommastellen
+führt beim Dekodieren zu einem Fehler. Alle übrigen Zahlen (Steuersätze, Kennzahlen) sind `float64`.
+
 ### Eigener Token
 
 Verwaltet die Anwendung den Token selbst, implementiert sie `TokenProvider`:
@@ -64,7 +138,8 @@ go generate ./...
 
 Der Generator (`internal/cmd/generate`) lädt die OpenAPI-Spezifikation live von
 <https://api.otto.market/docs/openapi.json>, entfernt alle Texte und erzeugt daraus
-mit [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen) die Datei `client.gen.go`.
+mit [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen) die Datei `client.gen.go` sowie die
+`Accept`-Tabelle `accept.gen.go` und die Pagination-Methoden `pages.gen.go`.
 
 Entfernt werden unter anderem `description`, `summary`, `title`, `example`, `examples`,
 `externalDocs`, `contact`, `license`, `termsOfService`, `$comment`, Beschreibungen von
